@@ -1,0 +1,29 @@
+.pokemon-card {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+}
+
+.card-pokemon-name-image {
+  width: 10em;
+}
+
+.pokemon-image {
+  width: 10em;
+  height: 10em;
+  margin: .5em 0;
+}
+
+.pokemon-name {
+  font-size: 1.4rem;    
+  color: rgb(247, 51, 16);
+  font-weight: bold;
+  text-shadow: 0 0 2px black;
+}
+
+.types-container {
+  margin: 1em .5em 0 .5em;
+  display: inline-block;
+}

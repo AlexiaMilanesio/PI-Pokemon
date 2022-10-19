@@ -1,0 +1,40 @@
+.not-found-page-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100vh;
+}
+
+.not-found-content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 5em;
+  padding: 10em 20em;
+  background-color: rgba(211, 24, 14, 0.8);
+  box-shadow: 0 0 5px black;
+  border-radius: 10px;
+}
+
+.not-found-content-container > h1 {
+  font-size: 3em;
+  letter-spacing: 3px;
+  margin-bottom: .2em;
+}
+
+.not-found-content-container > h3 {
+  font-size: 2em;
+  letter-spacing: 1px;
+}
+
+
+/* Button */
+.notfound-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: auto;
+  margin-top: -5em;
+  width: 56em;
+  float: right;
+}

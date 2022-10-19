@@ -1,0 +1,106 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Control panel */
+.control-panel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 1em 2em .5em;
+  min-width: 14em;
+  height: 30em;
+}
+
+/* Logo section */
+.pokemon-logo-container {
+  transition: transform 200ms ease-in-out;
+}
+
+.pokemon-logo {
+  width: 5em;
+  margin-bottom: 1.5em;
+  transform: scale(1.04);
+}
+
+/* Title */
+.section-title {
+  font-weight: bold;
+  margin: 1em 0;
+}
+
+.filter {
+  margin-top: 0;
+}
+
+/* Select */
+select {
+  font-size: .9em;
+  font-family: inherit;
+  background-color: rgb(241, 230, 230);
+  /* color: rgb(241, 230, 230);
+  background-color: black; */
+  width: 90%;
+  margin-bottom: 1em;
+  padding: .5em;
+  border: none;
+  border-right: .5em solid transparent;
+  border-radius: 10px;
+  /* box-shadow: 0 0 5px rgb(94, 93, 93) */
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+.control-panel-container:last-child {
+  margin-bottom: 0;
+}
+
+option {
+  color: black;
+}
+
+/* Button */
+.clear-filters-btn {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5em;
+  padding: .5em 1em;
+  border: none;
+  border: 2px solid black;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgb(69, 69, 69);
+  background-color: rgb(241, 230, 230);
+  color: black; 
+  /* background-color: rgb(220, 41, 10);
+  color: rgb(241, 230, 230); */
+  font-family: inherit;
+  font-size: inherit;
+  transition: transform 200ms ease-in-out;
+}
+
+.clear-filters-btn:hover {
+  color: rgb(241, 230, 230);
+  background-color: rgb(220, 41, 10);
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.clear-filters-btn:focus {
+  outline: none;
+  background-color: rgb(241, 230, 230);
+  color: black;
+  /* background-color: rgb(220, 41, 10); 
+  color: rgb(241, 230, 230); */
+}
+
+.clear-filters-btn:active {
+  box-shadow: 0 3px black;
+  transform: translateY(2px);
+}
+.clear-filters-btn:visited {
+  background-color: rgb(241, 230, 230);
+  color: black;
+}
