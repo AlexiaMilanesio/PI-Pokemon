@@ -12,6 +12,8 @@ import {
   ORDER_BY_NAME_DESC,
   ORDER_BY_ATTACK_ASC,
   ORDER_BY_ATTACK_DESC,
+  // ORDER_BY_SPEED_ASC,
+  // ORDER_BY_SPEED_DESC,
 } from "../actions/actions";
 
 const initialState = {
@@ -96,7 +98,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_NAME_ASC:
       return {
         ...state,
-        pokemons: state.pokemons.sort(
+        pokemons: state.pokemonsToFilter.sort(
           (a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)
         ),
       };
@@ -104,7 +106,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_NAME_DESC:
       return {
         ...state,
-        pokemons: state.pokemons.sort(
+        pokemons: state.pokemonsToFilter.sort(
           (a, b) => (a.name < b.name ? 1 : a.name > b.name ? -1 : 0)
         ),
       };

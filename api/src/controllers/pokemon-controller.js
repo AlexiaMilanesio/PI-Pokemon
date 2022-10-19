@@ -97,7 +97,7 @@ const getPokemonFromApiById = async (idPokemon) => {
       }),
     };
   } catch (error) {
-    console.log(`Pokemon with id: ${id} not found in API`);
+    console.log(`Pokemon with id: ${idPokemon} not found in API`);
     return error.message;
   }
 };
@@ -122,7 +122,7 @@ const getPokemonFromDbById = async (idPokemon) => {
     // return pokemonFromDbById;
 
   } catch (error) {
-    console.log(`Pokemon with id: ${id} not found in DB`);
+    console.log(`Pokemon with id: ${idPokemon} not found in DB`);
     return error.message;
   }
 };
@@ -181,7 +181,7 @@ const getPokemonFromApiByName = async (name) => {
 
 const getPokemonFromDbByName = async (name) => {
   try {
-    return await Pokemon.findOne({
+    return await Pokemon.findAll({
       where: { name },
       include: {
         model: Type,
@@ -208,7 +208,6 @@ const getPokemonByName = async (name) => {
     } else {
       pokemonByName = pokemonApiByName;
     }
-
     return pokemonByName;
   } catch (error) {
     console.log("There's been an error while trying to get pokemon by name");
@@ -225,7 +224,7 @@ const addNewPokemon = async (name, hp, attack, defense, speed, height, weight, i
     });
 
     // Search types of new pokemon in DB:
-    // TODO: preguntar por que "all" | preguntar si types no es un array con varios types
+    // TODO: preguntar por que "all"
     const newPokemonTypes = await Type.findAll({ 
       where: { name: types },
     });
@@ -262,6 +261,7 @@ const orderAttackDesc = async () => {
     return error.message;
   }
 };
+
 
 module.exports = {
   getPokemonsFromApi,

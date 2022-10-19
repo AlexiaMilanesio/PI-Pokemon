@@ -1,5 +1,4 @@
 import React from "react";
-// import icons from "../../images/icons";
 import pokemonName from "../../images/pokemon-name-logo.png";
 import "./PokemonCard.css";
 
@@ -16,7 +15,6 @@ const PokemonCard = ({ image, name, types }) => {
         {types && types.map((type, index) => {
           return (
             <div key={index} className="types-container">
-              {/* <img src={icons + "/" + type.name + ".svg"} alt="Type logo" /> */}
               <p className="type-name">
                 {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
               </p>

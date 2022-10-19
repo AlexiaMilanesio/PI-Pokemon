@@ -33,6 +33,7 @@ const Filters = (props) => {
 
   const handleTypeSelection = (e) => {
     e.preventDefault();
+    if (e.target.value === "All") dispatch(getAllPokemons());
     dispatch(filterTypes(e.target.value));
     props.setPage(1);
   };
@@ -42,7 +43,7 @@ const Filters = (props) => {
     if (e.target.value === "Asc") dispatch(orderByNameAsc());
     else if (e.target.value === "Desc") dispatch(orderByNameDesc());
     props.setPage(1);
-    props.setOrder(e.target.value); // Si lo borro se rompe
+    props.setOrder(e.target.value); // TODO Si lo borro se rompe
   };
 
   const handleAttackOrder = (e) => {
@@ -50,12 +51,12 @@ const Filters = (props) => {
     if (e.target.value === "Asc") {
       dispatch(orderByAttackAsc());
       props.setPage(1);
-      props.setOrder(e.target.value); // Si lo borro funciona igual
+      props.setOrder(e.target.value); // TODO Si lo borro funciona igual
     };
     if (e.target.value === "Desc") {
       dispatch(orderByAttackDesc());
       props.setPage(1);
-      props.setOrder(e.target.value); // Si lo borro funciona igual
+      props.setOrder(e.target.value); // TODO Si lo borro funciona igual
     };
   };
 
@@ -66,7 +67,7 @@ const Filters = (props) => {
       </Link>
 
       <p className="section-title filter">Filter by:</p>
-      {/* Filter by existing pokemon/from API or created by the user */}
+      {/* Filter by existing pokemon from API or created by the user */}
       <select value="" onChange={(e) => handleOriginSelection(e)}>
         <option value="" disabled>Select origin</option>
         <option value="All">All</option>
@@ -77,6 +78,7 @@ const Filters = (props) => {
       {/* Filter by pokemon type */}
       <select value="" onChange={(e) => handleTypeSelection(e)}>
         <option value="" disabled>Select type</option>
+        <option value="All">All</option>
         {types && types.map((type) => {
           return (
             <option key={type.id} value={type.name}>
@@ -102,6 +104,7 @@ const Filters = (props) => {
         <option value="Desc">Descending &#40;Z-A&#41;</option>
       </select>
 
+      {/* FALTA FUNCIONALIDAD */}
       <button className="clear-filters-btn">
         <ion-icon name="trash"></ion-icon>
         Clear filters

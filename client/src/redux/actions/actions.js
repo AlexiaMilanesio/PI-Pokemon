@@ -38,7 +38,6 @@ export const getAllPokemons = () => {
           dispatch({ type: GET_ALL_POKEMONS, payload: response.data })
         );
     } catch (error) {
-      alert("Pokemon not found, try a different name.");
       console.log("Actions-getAllPokemons error", error);
     }
   };
@@ -67,6 +66,7 @@ export const getPokemonByName = (name) => {
           dispatch({ type: GET_POKEMON_BY_NAME, payload: response.data }) 
         );
     } catch (error) {
+      alert("Pokemon not found, try a different name.");
       console.log("Actions-getPokemonByName error", error);
     }
   };
@@ -138,16 +138,6 @@ export const getPokemonsFromDb = () => {
 };
 
 
-// Clear filters
-// export const deletePokemonFilter = () => {
-//   try {
-//     return { type: CLEAR_FILTERS, payload: [] }
-//   } catch (error) {
-//     console.log("Actions-clearFilters error", error);
-//   }
-//  }; 
-
-
 // Order by name
 export const orderByNameAsc = (payload) => {
   return { type: ORDER_BY_NAME_ASC, payload }
@@ -186,3 +176,13 @@ export const orderByAttackDesc = () => {
     }
   }
 };
+
+
+// Clear filters
+// export const deletePokemonFilter = () => {
+//   try {
+//     return { type: CLEAR_FILTERS, payload: [] }
+//   } catch (error) {
+//     console.log("Actions-clearFilters error", error);
+//   }
+//  }; 
