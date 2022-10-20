@@ -27,8 +27,7 @@ const getTypes = async () => {
     let types = await Type.findAll();
     return types;
   } catch (error) {
-    console.log("There's been an error while getting the types");
-    return error.message;
+    console.log("There's been an error while getting the types", error);
   }
 };
 

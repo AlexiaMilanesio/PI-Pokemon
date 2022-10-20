@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
     const result = await getTypes();
     res.status(200).send(result);
   } catch (error) {
-    return error.message;
+    res.status(400).send(error.message);
   }
 });
 
