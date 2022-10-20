@@ -90,15 +90,7 @@ router.post("/", async (req, res) => {
       return res.status(404).send("Name and image are required to create a new pokemon");
 
     const result = await createPokemon(
-      name,
-      hp,
-      attack,
-      defense,
-      speed,
-      height,
-      weight,
-      image,
-      types
+      name, hp, attack, defense, speed, height, weight, image, types
     );
     res.status(201).send(result);
   } catch (error) {

@@ -5,6 +5,7 @@ const { Pokemon, Type } = require("../db");
 const url = "https://pokeapi.co/api/v2/pokemon";
 const limit = 40;
 
+
 // Get pokemons
 const getPokemonsFromApi = async () => {
   try {
@@ -74,6 +75,7 @@ const getAllPokemons = async () => {
   }
 };
 
+
 // Get pokemon by id
 const getPokemonFromApiById = async (idPokemon) => {
   try {
@@ -104,23 +106,14 @@ const getPokemonFromApiById = async (idPokemon) => {
 
 const getPokemonFromDbById = async (idPokemon) => {
   try {
-    const pokemonsFromDb = await Pokemon.findAll({
+    return await Pokemon.findOne({
       where: { id: idPokemon },
       include: {
         model: Type,
-        attribute: ["id", "name"],
+        attributes: ["id", "name"],
         through: { attributes: [] },
       },
     });
-
-    return pokemonsFromDb;
-
-    // const pokemonsFromDb = await getPokemonsFromDb();
-    // const pokemonFromDbById = await pokemonsFromDb.find({
-    //   where: { id: idPokemon }
-    // })
-    // return pokemonFromDbById;
-
   } catch (error) {
     console.log(`Pokemon with id: ${idPokemon} not found in DB`);
     return error.message;
@@ -133,23 +126,20 @@ const getPokemonById = async (idPokemon) => {
     let pokemonDbById = await getPokemonFromDbById(idPokemon);
     let pokemonById;
     
-    // TODO BORRAR
-    // if (pokemonApiById) return pokemonById = pokemonApiById;
-    // if (pokemonDbById) return pokemonById = pokemonDbById;
-    // return `Pokemon not found. There's no pokemon with id: ${idPokemon}`;
-
     if (!pokemonApiById) {
       if (!pokemonDbById) return `Pokemon not found. There's no pokemon with id: ${idPokemon}`;
       pokemonById = pokemonDbById;
     } else {
       pokemonById = pokemonApiById;
     }
+    console.log(pokemonById); //TODO BORRAR
     return pokemonById;
   } catch (error) {
     console.log("There's been an error while trying to get pokemon by id");
     return error.message;
   }
 };
+
 
 // Get pokemon by name
 const getPokemonFromApiByName = async (name) => {
@@ -181,11 +171,11 @@ const getPokemonFromApiByName = async (name) => {
 
 const getPokemonFromDbByName = async (name) => {
   try {
-    return await Pokemon.findAll({
+    return await Pokemon.findOne({
       where: { name },
       include: {
         model: Type,
-        attribute: ["id", "name"],
+        attributes: ["id", "name"],
         through: { attributes: [] },
       },
     });
@@ -215,29 +205,28 @@ const getPokemonByName = async (name) => {
   }
 };
 
+
 // Create new pokemon
 const createPokemon = async (name, hp, attack, defense, speed, height, weight, image, types) => {
   try {
-    // Creating a new pokemon in DB (at this point, it doesn't have types):
+    // Creating a new pokemon in DB (at this point, it doesn't have types)
     const newPokemon = await Pokemon.create({
       name, hp, attack, defense, speed, height, weight, image
     });
 
-    // Search types of new pokemon in DB:
-    // TODO: preguntar por que "all"
+    // Search types of new pokemon in Type table DB
     const newPokemonTypes = await Type.findAll({ 
       where: { name: types },
     });
 
-    // Adding types to new pokemon with sequelize association method "add":
-    // (Estos métodos sirven para manejar los datos que vienen del cliente)
-    const createdNewPokemon = await newPokemon.addTypes(newPokemonTypes);   
-    return createdNewPokemon;
+    // Adding types to new pokemon with sequelize association method "add"
+    return await newPokemon.addType(newPokemonTypes);   
   } catch (error) {
     console.log("There's been an error while while creating your pokemon");
     return error.message;
   }
 };
+
 
 // Order pokemons by speed
 const orderAttackAsc = async () => {
