@@ -36,7 +36,7 @@ const CreatePokemon = (props) => {
       ...formData,
       [name]: type === "text" ? value.toLowerCase()
             : type !== "checkbox" ? value 
-            : !formData.types.includes(value) ? formData.types.push({name: value})
+            : !formData.types.includes(value) ? formData.types.push(value)
             : formData.types.splice(formData.types.indexOf(value), 1)
     });
 

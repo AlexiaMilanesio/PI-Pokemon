@@ -7,7 +7,7 @@ const {
   getAllPokemons,
   getPokemonById,
   getPokemonByName,
-  addNewPokemon,
+  createPokemon,
   orderAttackAsc,
   orderAttackDesc,
 } = require("../controllers/pokemon-controller");
@@ -89,7 +89,7 @@ router.post("/", async (req, res) => {
     if (!name || !image) // Solo name & image porque las demás propiedades tienen un defaultValue en el Pokemon model
       return res.status(404).send("Name and image are required to create a new pokemon");
 
-    const result = await addNewPokemon(
+    const result = await createPokemon(
       name,
       hp,
       attack,

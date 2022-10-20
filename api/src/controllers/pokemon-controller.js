@@ -216,7 +216,7 @@ const getPokemonByName = async (name) => {
 };
 
 // Create new pokemon
-const addNewPokemon = async (name, hp, attack, defense, speed, height, weight, image, types) => {
+const createPokemon = async (name, hp, attack, defense, speed, height, weight, image, types) => {
   try {
     // Creating a new pokemon in DB (at this point, it doesn't have types):
     const newPokemon = await Pokemon.create({
@@ -269,7 +269,7 @@ module.exports = {
   getAllPokemons,
   getPokemonById,
   getPokemonByName,
-  addNewPokemon,
+  createPokemon,
   orderAttackAsc,
   orderAttackDesc
 };
