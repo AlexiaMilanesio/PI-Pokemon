@@ -41,10 +41,10 @@ const getPokemonsFromApi = async () => {
 
     return pokemonsFromApi;
   } catch (error) {
-    console.log("There's been an error while trying to get the pokemons from the API");
-    return error.message;
+    console.log("There's been an error while trying to get the pokemons from the API", error);
   }
 };
+
 
 const getPokemonsFromDb = async () => {
   try {
@@ -57,10 +57,10 @@ const getPokemonsFromDb = async () => {
       },
     });
   } catch (error) {
-    console.log("There's been an error while trying to get the pokemons from the DB")
-    return error.message;
+    console.log("There's been an error while trying to get the pokemons from the DB", error)
   }
 };
+
 
 const getAllPokemons = async () => {
   try {
@@ -70,8 +70,7 @@ const getAllPokemons = async () => {
 
     return allPokemons;
   } catch (error) {
-    console.log("There's been an error while trying to get all pokemons");
-    return error.message;
+    console.log("There's been an error while trying to get all pokemons", error);
   }
 };
 
@@ -99,14 +98,14 @@ const getPokemonFromApiById = async (id) => {
       }),
     };
   } catch (error) {
-    console.log(`Pokemon with id: ${id} not found in API`);
-    return error.message;
+    console.log(`Pokemon with id: ${id} not found in API`, error);
   }
 };
 
+
 const getPokemonFromDbById = async (id) => {
   try {
-    return await Pokemon.findOne({
+    const pokemonFromDbById = await Pokemon.findOne({
       where: { id },
       include: {
         model: Type,
@@ -114,11 +113,14 @@ const getPokemonFromDbById = async (id) => {
         through: { attributes: [] },
       },
     });
+
+    if (!pokemonFromDbById) return null;
+    return pokemonFromDbById;
   } catch (error) {
-    console.log(`Pokemon with id: ${id} not found in DB`);
-    return error.message;
+    console.log(`Pokemon with id: ${id} not found in DB`, error);
   }
 };
+
 
 const getPokemonById = async (id) => {
   try {
@@ -132,11 +134,10 @@ const getPokemonById = async (id) => {
     } else {
       pokemonById = pokemonApiById;
     }
-    console.log(pokemonById); //TODO BORRAR
+
     return pokemonById;
   } catch (error) {
-    console.log("There's been an error while trying to get pokemon by id");
-    return error.message;
+    console.log("There's been an error while trying to get pokemon by id", error);
   }
 };
 
@@ -164,14 +165,14 @@ const getPokemonFromApiByName = async (name) => {
       }),
     };
   } catch (error) {
-    console.log(`Pokemon ${name} not found in API`);
-    return error.message;
+    console.log(`Pokemon ${name} not found in API`, error);
   }
 };
 
+
 const getPokemonFromDbByName = async (name) => {
   try {
-    return await Pokemon.findOne({
+    const pokemonFromDbByName = await Pokemon.findOne({
       where: { name },
       include: {
         model: Type,
@@ -179,11 +180,14 @@ const getPokemonFromDbByName = async (name) => {
         through: { attributes: [] },
       },
     });
+
+    if(!pokemonFromDbByName) return null;
+    return pokemonFromDbByName;
   } catch (error) {
-    console.log(`Pokemon ${name} not found in DB`);
-    return error.message;
+    console.log(`Pokemon ${name} not found in DB`, error);
   }
 };
+
 
 const getPokemonByName = async (name) => {
   try {
@@ -200,8 +204,7 @@ const getPokemonByName = async (name) => {
     }
     return pokemonByName;
   } catch (error) {
-    console.log("There's been an error while trying to get pokemon by name");
-    return error.message;
+    console.log("There's been an error while trying to get pokemon by name", error);
   }
 };
 
@@ -222,8 +225,7 @@ const createPokemon = async (name, hp, attack, defense, speed, height, weight, i
     // Adding types to new pokemon with sequelize association method "add"
     return await newPokemon.addType(newPokemonTypes);   
   } catch (error) {
-    console.log("There's been an error while while creating your pokemon");
-    return error.message;
+    console.log("There's been an error while while creating your pokemon", error);
   }
 };
 
@@ -235,10 +237,10 @@ const orderAttackAsc = async () => {
     let pokemonSortedAsc = allPokemons.sort((a, b) => a.attack - b.attack);
     return pokemonSortedAsc;
   } catch (error) {
-    console.log("There's been a problem while asc ordering pokemons");
-    return error.message;
+    console.log("There's been a problem while asc ordering pokemons", error);
   }
 };
+
 
 const orderAttackDesc = async () => {
   try {
@@ -246,8 +248,7 @@ const orderAttackDesc = async () => {
     let pokemonsSortedDesc = allPokemons.sort((a, b) => b.attack - a.attack);
     return pokemonsSortedDesc;
   } catch (error) {
-    console.log("There's been a problem while desc ordering pokemons");
-    return error.message;
+    console.log("There's been a problem while desc ordering pokemons", error);
   }
 };
 
