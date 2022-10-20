@@ -8,16 +8,16 @@ const PokemonCard = ({ image, name, types }) => {
       <img src={pokemonName} alt="Pokemon" className="card-pokemon-name-image"/>
       <img src={image} alt={name} className="pokemon-image"/>
    
-      <h4 className="pokemon-name">
-        {name.charAt(0).toUpperCase() + name.slice(1)}
-      </h4>
+      <h4 className="pokemon-name">{name}</h4>
+      {/*  
+        CSS -----> text-transform: capitalize;   
+        HTML ----> {name.charAt(0).toUpperCase() + name.slice(1)}  
+      */}
       <div>
         {types && types.map((type, index) => {
           return (
             <div key={index} className="types-container">
-              <p className="type-name">
-                {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
-              </p>
+              <p className="type-name">{type.name}</p>
             </div>
           )
         })}

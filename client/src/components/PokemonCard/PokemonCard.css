@@ -17,6 +17,7 @@
 }
 
 .pokemon-name {
+  text-transform: capitalize;
   font-size: 1.4rem;    
   color: rgb(247, 51, 16);
   font-weight: bold;
@@ -26,4 +27,8 @@
 .types-container {
   margin: 1em .5em 0 .5em;
   display: inline-block;
+}
+
+.type-name {
+  text-transform: capitalize;
 }
