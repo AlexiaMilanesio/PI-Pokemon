@@ -48,16 +48,10 @@ const Filters = (props) => {
 
   const handleAttackOrder = (e) => {
     e.preventDefault();
-    if (e.target.value === "Asc") {
-      dispatch(orderByAttackAsc());
-      props.setPage(1);
-      props.setOrder(e.target.value); // TODO Si lo borro funciona igual
-    };
-    if (e.target.value === "Desc") {
-      dispatch(orderByAttackDesc());
-      props.setPage(1);
-      props.setOrder(e.target.value); // TODO Si lo borro funciona igual
-    };
+    if (e.target.value === "Asc") dispatch(orderByAttackAsc()); 
+    if (e.target.value === "Desc") dispatch(orderByAttackDesc());
+    props.setPage(1);
+    // props.setOrder(e.target.value); // TODO Si lo borro funciona igual
   };
 
   return (
@@ -67,8 +61,10 @@ const Filters = (props) => {
       </Link>
 
       <p className="section-title filter">Filter by:</p>
+
+      <p className="order-filter-name">Origin</p>
       {/* Filter by existing pokemon from API or created by the user */}
-      <select value="" onChange={(e) => handleOriginSelection(e)}>
+      <select onChange={(e) => handleOriginSelection(e)}>
         <option value="" disabled>Select origin</option>
         <option value="All">All</option>
         <option value="Existing">Existing</option>
@@ -76,7 +72,8 @@ const Filters = (props) => {
       </select>
 
       {/* Filter by pokemon type */}
-      <select value="" onChange={(e) => handleTypeSelection(e)}>
+      <p className="order-filter-name">Type</p>
+      <select onChange={(e) => handleTypeSelection(e)}>
         <option value="" disabled>Select type</option>
         <option value="All">All</option>
         {types && types.map((type) => {
@@ -89,16 +86,19 @@ const Filters = (props) => {
       </select>
 
 
-      <p className="section-title">Order by:</p>
+      <p className="section-title order">Order by:</p>
+
       {/* Order by name */}
-      <select value="" onChange={(e) => handleNameOrder(e)}>
+      <p className="order-filter-name">Name</p>
+      <select onChange={(e) => handleNameOrder(e)}>
         <option value="" disabled>Order by name</option>
         <option value="Asc">Ascending &#40;A-Z&#41;</option>
         <option value="Desc">Descending &#40;Z-A&#41;</option>
       </select>
 
       {/* Order by attack */}
-      <select value="" onChange={(e) => handleAttackOrder(e)}>
+      <p className="order-filter-name">Attack</p>
+      <select onChange={(e) => handleAttackOrder(e)}>
         <option value="" disabled>Order by attack</option>
         <option value="Asc">Ascending &#40;A-Z&#41;</option>
         <option value="Desc">Descending &#40;Z-A&#41;</option>

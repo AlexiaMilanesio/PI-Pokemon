@@ -14,7 +14,7 @@ function App() {
       <BrowserRouter>
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/pokemon" component={PokemonsHome} />
-        <Route path="/pokemon/:idPokemon" component={PokemonDetail} />
+        <Route path="/pokemon/:id" component={PokemonDetail} />
         <Route path="/create" component={CreatePokemon} />  
         <Route path="/about" component={AboutPage} />
         {/* <Route path="*" component={NotFoundPage} /> */}

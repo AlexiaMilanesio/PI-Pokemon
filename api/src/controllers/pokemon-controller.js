@@ -77,9 +77,9 @@ const getAllPokemons = async () => {
 
 
 // Get pokemon by id
-const getPokemonFromApiById = async (idPokemon) => {
+const getPokemonFromApiById = async (id) => {
   try {
-    const detailedPokemonApi = await axios.get(`${url}/${idPokemon}`)
+    const detailedPokemonApi = await axios.get(`${url}/${id}`)
       .then(response => response.data);
       
     if (!detailedPokemonApi) return null;
@@ -99,15 +99,15 @@ const getPokemonFromApiById = async (idPokemon) => {
       }),
     };
   } catch (error) {
-    console.log(`Pokemon with id: ${idPokemon} not found in API`);
+    console.log(`Pokemon with id: ${id} not found in API`);
     return error.message;
   }
 };
 
-const getPokemonFromDbById = async (idPokemon) => {
+const getPokemonFromDbById = async (id) => {
   try {
     return await Pokemon.findOne({
-      where: { id: idPokemon },
+      where: { id },
       include: {
         model: Type,
         attributes: ["id", "name"],
@@ -115,19 +115,19 @@ const getPokemonFromDbById = async (idPokemon) => {
       },
     });
   } catch (error) {
-    console.log(`Pokemon with id: ${idPokemon} not found in DB`);
+    console.log(`Pokemon with id: ${id} not found in DB`);
     return error.message;
   }
 };
 
-const getPokemonById = async (idPokemon) => {
+const getPokemonById = async (id) => {
   try {
-    let pokemonApiById = await getPokemonFromApiById(idPokemon);
-    let pokemonDbById = await getPokemonFromDbById(idPokemon);
+    let pokemonApiById = await getPokemonFromApiById(id);
+    let pokemonDbById = await getPokemonFromDbById(id);
     let pokemonById;
     
     if (!pokemonApiById) {
-      if (!pokemonDbById) return `Pokemon not found. There's no pokemon with id: ${idPokemon}`;
+      if (!pokemonDbById) return `Pokemon not found. There's no pokemon with id: ${id}`;
       pokemonById = pokemonDbById;
     } else {
       pokemonById = pokemonApiById;

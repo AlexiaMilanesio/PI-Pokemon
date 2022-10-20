@@ -66,7 +66,7 @@ export const getPokemonByName = (name) => {
           dispatch({ type: GET_POKEMON_BY_NAME, payload: response.data }) 
         );
     } catch (error) {
-      alert("Pokemon not found, try a different name.");
+      alert("Pokemon not found, try a different name.", error);
       console.log("Actions-getPokemonByName error", error);
     }
   };
@@ -75,9 +75,13 @@ export const getPokemonByName = (name) => {
 
 // Create pokemon
 export const createPokemon = (pokemon) => {
-  return async () => {
+  return async (dispatch) => {
     try {
-      return await axios.post(`${URL_POKEMONS}`, pokemon)
+      return await axios
+        .post(`${URL_POKEMONS}`, pokemon)
+        .then((response) => {
+          dispatch({ type: CREATE_POKEMON, payload: response.data })
+        })
     } catch (error) {
       console.log("Actions-createPokemon error", error);
     }
@@ -103,8 +107,8 @@ export const getAllTypes = () => {
 
 // ----------------Filtrados y ordenamientos---------------- //
 // Filter by type
-export const filterTypes = (payload) => {
-  return { type: FILTER_TYPES, payload }
+export const filterTypes = (type) => {
+  return { type: FILTER_TYPES, payload: type }
 };
 
 

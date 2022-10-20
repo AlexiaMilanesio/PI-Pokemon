@@ -8,20 +8,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2em 1em 2em .5em;
+  padding: 1.3em 1em 2em .5em;
   min-width: 14em;
   height: 30em;
 }
 
 /* Logo section */
-.pokemon-logo-container {
-  transition: transform 200ms ease-in-out;
-}
-
 .pokemon-logo {
   width: 5em;
   margin-bottom: 1.5em;
-  transform: scale(1.04);
 }
 
 /* Title */
@@ -30,24 +25,31 @@
   margin: 1em 0;
 }
 
+.order-filter-name {
+  padding-bottom: .4em;
+  font-size: .9em;
+}
+
+.order {
+  margin-top: 1em;
+}
+
 .filter {
   margin-top: 0;
 }
+
 
 /* Select */
 select {
   font-size: .9em;
   font-family: inherit;
   background-color: rgb(241, 230, 230);
-  /* color: rgb(241, 230, 230);
-  background-color: black; */
   width: 90%;
   margin-bottom: 1em;
   padding: .5em;
   border: none;
   border-right: .5em solid transparent;
   border-radius: 10px;
-  /* box-shadow: 0 0 5px rgb(94, 93, 93) */
 }
 
 select:hover {
@@ -74,8 +76,6 @@ option {
   box-shadow: 0 0 5px rgb(69, 69, 69);
   background-color: rgb(241, 230, 230);
   color: black; 
-  /* background-color: rgb(220, 41, 10);
-  color: rgb(241, 230, 230); */
   font-family: inherit;
   font-size: inherit;
   transition: transform 200ms ease-in-out;
@@ -92,8 +92,6 @@ option {
   outline: none;
   background-color: rgb(241, 230, 230);
   color: black;
-  /* background-color: rgb(220, 41, 10); 
-  color: rgb(241, 230, 230); */
 }
 
 .clear-filters-btn:active {

@@ -9,7 +9,7 @@ import "./PokemonDetail.css";
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();
   const pokemon = useSelector((state) => state.pokemonDetail);
-  const pokemonId = props.match.params.idPokemon;
+  const pokemonId = props.match.params.id;
 
   useEffect(() => {
     dispatch(getPokemonById(pokemonId));

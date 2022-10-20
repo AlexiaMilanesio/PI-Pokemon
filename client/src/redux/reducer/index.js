@@ -60,13 +60,14 @@ const rootReducer = (state = initialState, action) => {
     case FILTER_TYPES:
       let filteredType = state.pokemonsToFilter.filter((pokemon) => {
         if (pokemon.types) {
-          // Creamos un array con todos los nombres de los types:
+          // Creamos un array con todos los nombres de los types
           let typeNames = pokemon.types.map((type) => type.name);
-          // Preguntamos si el array de types contiene el type seleccionado por el usuario:
+          // Preguntamos si el array de types contiene el type seleccionado por el usuario (devuelve true o false)
           return typeNames.includes(action.payload);
         }
         if (pokemon.typeNames) {
-          // Si existe el array de type names en el pokemon, vamos a retornar true o false si el type name seleccionado por el usuario está incluido en dicho array (de type names):
+          // Si existe el array de type names en el pokemon, vamos a retornar true o false si el type name seleccionado 
+          // por el usuario está incluido en dicho array (type names)
           return pokemon.typeNames.includes(action.payload);
         }
         return null;
@@ -74,7 +75,7 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        pokemons: filteredType === "all" ? state.pokemonsToFilter : filteredType,
+        pokemons: filteredType === "All" ? state.pokemonsToFilter : filteredType,
       };
 
     case FILTER_POKEMONS_FROM_API:

@@ -12,7 +12,7 @@ const PokemonsHome = (props) => {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemons);
 
-  // -------------Pagination-------------- //
+  // -------------------------Pagination-------------------------- //
 
   const [order, setOrder] = useState("");
   const [page, setPage] = useState(1);
@@ -22,8 +22,7 @@ const PokemonsHome = (props) => {
 
   const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
   const pagination = (pageNumber) => setPage(pageNumber);
-
-  // ------------------------------------ //
+  // ------------------------------------------------------------- //
 
   useEffect(() => {
     dispatch(getAllPokemons());

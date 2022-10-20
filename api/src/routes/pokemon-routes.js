@@ -71,10 +71,10 @@ router.get("/orderAttackDesc", async (req, res) => {
 });
 
 
-router.get("/:idPokemon", async (req, res) => {
-  const { idPokemon } = req.params;
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
   try {
-    const result = await getPokemonById(idPokemon);
+    const result = await getPokemonById(id);
     res.status(200).send(result);
   } catch (error) {
     res.status(400).send(error.message);
