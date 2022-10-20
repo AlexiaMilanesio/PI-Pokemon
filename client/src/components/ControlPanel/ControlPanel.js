@@ -11,6 +11,7 @@ import {
   orderByAttackDesc,
   orderByNameAsc, 
   orderByNameDesc,
+  clearFilters,
 } from "../../redux/actions/actions";
 import pokemonLogo from "../../images/pokemon-logo.png";
 import "./ControlPanel.css";
@@ -43,7 +44,7 @@ const Filters = (props) => {
     if (e.target.value === "Asc") dispatch(orderByNameAsc());
     else if (e.target.value === "Desc") dispatch(orderByNameDesc());
     props.setPage(1);
-    props.setOrder(e.target.value); // TODO Si lo borro se rompe
+    props.setOrder(e.target.value); // Setting order in local state
   };
 
   const handleAttackOrder = (e) => {
@@ -51,8 +52,14 @@ const Filters = (props) => {
     if (e.target.value === "Asc") dispatch(orderByAttackAsc()); 
     if (e.target.value === "Desc") dispatch(orderByAttackDesc());
     props.setPage(1);
-    // props.setOrder(e.target.value); // TODO Si lo borro funciona igual
+    props.setOrder(e.target.value); // TODO Si lo borro funciona igual
   };
+
+  const handleClearFiltersAndOrder = (e) => {
+    e.preventDefault();
+    dispatch(clearFilters());
+    dispatch(getAllPokemons());
+  }
 
   return (
     <div className="control-panel-container">
@@ -85,7 +92,6 @@ const Filters = (props) => {
         })}
       </select>
 
-
       <p className="section-title order">Order by:</p>
 
       {/* Order by name */}
@@ -105,7 +111,7 @@ const Filters = (props) => {
       </select>
 
       {/* FALTA FUNCIONALIDAD */}
-      <button className="clear-filters-btn">
+      <button className="clear-filters-btn" onClick={(e) => handleClearFiltersAndOrder(e)}>
         <ion-icon name="trash"></ion-icon>
         Clear filters
       </button>

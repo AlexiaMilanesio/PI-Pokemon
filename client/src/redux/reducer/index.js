@@ -7,7 +7,7 @@ import {
   FILTER_TYPES,
   FILTER_POKEMONS_FROM_API,
   FILTER_POKEMONS_FROM_DB,
-  // CLEAR_FILTERS,
+  CLEAR_FILTERS,
   ORDER_BY_NAME_ASC,
   ORDER_BY_NAME_DESC,
   ORDER_BY_ATTACK_ASC,
@@ -66,7 +66,7 @@ const rootReducer = (state = initialState, action) => {
           return typeNames.includes(action.payload);
         }
         if (pokemon.typeNames) {
-          // Si existe el array de type names en el pokemon, vamos a retornar true o false si el type name seleccionado 
+          // Si existe el array de type names en el pokemon, vamos a retornar true o false si el type name seleccionado
           // por el usuario está incluido en dicho array (type names)
           return pokemon.typeNames.includes(action.payload);
         }
@@ -75,7 +75,8 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        pokemons: filteredType === "All" ? state.pokemonsToFilter : filteredType,
+        pokemons:
+          filteredType === "All" ? state.pokemonsToFilter : filteredType,
       };
 
     case FILTER_POKEMONS_FROM_API:
@@ -90,25 +91,19 @@ const rootReducer = (state = initialState, action) => {
         pokemons: action.payload,
       };
 
-    // case CLEAR_FILTERS:
-    //   return {
-    //     ...state,
-    //     pokemonsToFilter: action.payload,
-    //   };
-
     case ORDER_BY_NAME_ASC:
       return {
         ...state,
-        pokemons: state.pokemonsToFilter.sort(
-          (a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0)
+        pokemons: state.pokemonsToFilter.sort((a, b) =>
+          a.name > b.name ? 1 : a.name < b.name ? -1 : 0
         ),
       };
 
     case ORDER_BY_NAME_DESC:
       return {
         ...state,
-        pokemons: state.pokemonsToFilter.sort(
-          (a, b) => (a.name < b.name ? 1 : a.name > b.name ? -1 : 0)
+        pokemons: state.pokemonsToFilter.sort((a, b) =>
+          a.name < b.name ? 1 : a.name > b.name ? -1 : 0
         ),
       };
 
@@ -126,6 +121,12 @@ const rootReducer = (state = initialState, action) => {
         pokemons: action.payload,
       };
 
+    case CLEAR_FILTERS:
+      return {
+        ...state,
+        pokemonsToFilter: action.payload,
+      };
+        
     default:
       return {
         ...state,

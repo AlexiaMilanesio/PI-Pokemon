@@ -17,7 +17,7 @@ export const ORDER_BY_NAME_DESC = "ORDER_BY_NAME_DESC";
 export const ORDER_BY_ATTACK_ASC = "ORDER_BY_ATTACK_ASC";
 export const ORDER_BY_ATTACK_DESC = "ORDER_BY_ATTACK_DESC";
 
-// export const CLEAR_FILTERS = "CLEAR_FILTERS"; 
+export const CLEAR_FILTERS = "CLEAR_FILTERS"; 
 
 // Orden extra
 // export const ORDER_SPEED_ASC = "ORDER_SPEED_ASC";
@@ -183,10 +183,10 @@ export const orderByAttackDesc = () => {
 
 
 // Clear filters
-// export const deletePokemonFilter = () => {
-//   try {
-//     return { type: CLEAR_FILTERS, payload: [] }
-//   } catch (error) {
-//     console.log("Actions-clearFilters error", error);
-//   }
-//  }; 
+export const clearFilters = () => {
+  try {
+    return { type: CLEAR_FILTERS, payload: [] }
+  } catch (error) {
+    console.log("Actions-clearFilters error", error);
+  }
+ }; 
