@@ -12,6 +12,8 @@ import {
   orderByNameAsc, 
   orderByNameDesc,
   clearFilters,
+  orderBySpeedAsc,
+  orderBySpeedDesc,
 } from "../../redux/actions/actions";
 import pokemonLogo from "../../images/pokemon-logo.png";
 import "./ControlPanel.css";
@@ -20,9 +22,11 @@ const Filters = (props) => {
   const types = useSelector((state) => state.types);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
     dispatch(getAllTypes());
   }, [dispatch]);
+
 
   const handleOriginSelection = (e) => {
     e.preventDefault();
@@ -42,7 +46,7 @@ const Filters = (props) => {
   const handleNameOrder = (e) => {
     e.preventDefault();
     if (e.target.value === "Asc") dispatch(orderByNameAsc());
-    else if (e.target.value === "Desc") dispatch(orderByNameDesc());
+    if (e.target.value === "Desc") dispatch(orderByNameDesc());
     props.setPage(1);
     props.setOrder(e.target.value); // Setting order in local state
   };
@@ -55,12 +59,21 @@ const Filters = (props) => {
     props.setOrder(e.target.value); // TODO Si lo borro funciona igual
   };
 
-  const handleClearFiltersAndOrder = (e) => {
+  const handleSpeedOrder = (e) => {
+    e.preventDefault();
+    if (e.target.value === "Asc") dispatch(orderBySpeedAsc()); 
+    if (e.target.value === "Desc") dispatch(orderBySpeedDesc());
+    props.setPage(1);
+    props.setOrder(e.target.value); // TODO Si lo borro funciona igual
+  };
+
+  const handleClearFilters = (e) => {
     e.preventDefault();
     dispatch(clearFilters());
     dispatch(getAllPokemons());
   }
 
+  
   return (
     <div className="control-panel-container">
       <Link to="/" className="pokemon-logo-container">
@@ -110,8 +123,16 @@ const Filters = (props) => {
         <option value="Desc">Descending &#40;Z-A&#41;</option>
       </select>
 
-      {/* FALTA FUNCIONALIDAD */}
-      <button className="clear-filters-btn" onClick={(e) => handleClearFiltersAndOrder(e)}>
+      {/* Order by speed */}
+      <p className="order-filter-name">Speed</p>
+      <select onChange={(e) => handleSpeedOrder(e)}>
+        <option value="" disabled>Order by speed</option>
+        <option value="Asc">Ascending &#40;A-Z&#41;</option>
+        <option value="Desc">Descending &#40;Z-A&#41;</option>
+      </select>
+
+
+      <button className="clear-filters-btn" onClick={(e) => handleClearFilters(e)}>
         <ion-icon name="trash"></ion-icon>
         Clear filters
       </button>

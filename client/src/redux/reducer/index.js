@@ -4,6 +4,7 @@ import {
   GET_POKEMON_BY_ID,
   GET_POKEMON_BY_NAME,
   CREATE_POKEMON,
+  DELETE_POKEMON,
   FILTER_TYPES,
   FILTER_POKEMONS_FROM_API,
   FILTER_POKEMONS_FROM_DB,
@@ -12,8 +13,8 @@ import {
   ORDER_BY_NAME_DESC,
   ORDER_BY_ATTACK_ASC,
   ORDER_BY_ATTACK_DESC,
-  // ORDER_BY_SPEED_ASC,
-  // ORDER_BY_SPEED_DESC,
+  ORDER_BY_SPEED_ASC,
+  ORDER_BY_SPEED_DESC,
 } from "../actions/actions";
 
 const initialState = {
@@ -56,6 +57,13 @@ const rootReducer = (state = initialState, action) => {
         pokemons: [...state.pokemons, action.payload],
         pokemonsToFilter: [...state.pokemonsToFilter, action.payload],
       };
+
+    case DELETE_POKEMON:
+      return {
+        ...state,
+        pokemons: state.pokemons.filter(pokemon => pokemon.id !== action.payload),
+        pokemonsToFilter: state.pokemonsToFilter.filter(pokemon => pokemon.id !== action.payload),
+      }
 
     case FILTER_TYPES:
       let filteredType = state.pokemonsToFilter.filter((pokemon) => {
@@ -110,15 +118,25 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_ATTACK_ASC:
       return {
         ...state,
-        // pokemons: state.pokemons.sort((a, b) => a.attack - b.attack),
         pokemons: action.payload,
       };
 
     case ORDER_BY_ATTACK_DESC:
       return {
         ...state,
-        // pokemons: state.pokemons.sort((a, b) => b.attack - a.attack),
         pokemons: action.payload,
+      };
+
+    case ORDER_BY_SPEED_ASC:
+      return {
+        ...state,
+        pokemons: state.pokemons.sort((a, b) => a.speed - b.speed),
+      };
+
+    case ORDER_BY_SPEED_DESC:
+      return {
+        ...state,
+        pokemons: state.pokemons.sort((a, b) => b.speed - a.speed),
       };
 
     case CLEAR_FILTERS:
@@ -126,7 +144,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemonsToFilter: action.payload,
       };
-        
+
     default:
       return {
         ...state,

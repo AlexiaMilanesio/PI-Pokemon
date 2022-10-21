@@ -22,7 +22,7 @@ router.get("/", async (req, res) => {
       const result = await getAllPokemons();
       return res.status(200).send(result);
     }
-
+    
     const result = await getPokemonByName(name);
     res.status(200).send(result);
   } catch (error) {

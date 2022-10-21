@@ -8,16 +8,18 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
+
   const handleChange = (e) => {
-    e.preventDefault();
     setName(e.target.value.toLowerCase());
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getPokemonByName(name));
     setName("");
   };
+
 
   return (
     <div className="header-container">
@@ -48,10 +50,10 @@ const Header = (props) => {
       <form onSubmit={(e) => handleSubmit(e)} className="search-engine-container">
         <input
           type="search" 
-          id="searchInput"
-          // autoComplete="off"
           placeholder="Search pokemon"
           className="search-input"
+          name="name"
+          value={name}
           onChange={(e) => handleChange(e)}
         />
         <button type="submit" className="search-pokemon-btn">

@@ -112,26 +112,31 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /* Media queries */
-/* Hacer menu desplegable y searchbar nuevo o suficiente con menu desplegable */
+
 @media (max-width: 1070px) {
+  .search-engine-container {
+    display: flex;
+  }
+
+  .search-input {
+    width: 100%;
+  }
 }
 
-/* 
-        <header>
-            <div class="logo">
-                <img src="img/devjane.png" alt="">
-            </div>
-            <button class="nav-toggle" aria-label="toggle navigation">
-                <span class="hamburger"></span>
-            </button>
-            <nav class="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">My Services</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">About me</a></li>
-                    <li class="nav__item"><a href="#" class="nav__link">My Work</a></li>
-                </ul>
-            </nav>
-        </header>
+@media (max-width: 900px) {
+  /* Hacer menu desplegable y searchbar nuevo o suficiente con menu desplegable */
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    margin-left: 0;
+  }
 
-*/
+  /* .nav-container {} */
+
+  /* .search-engine-container {} */
+
+  /* .search-input {} */
+}

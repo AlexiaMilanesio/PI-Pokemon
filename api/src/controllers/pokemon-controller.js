@@ -105,7 +105,7 @@ const getPokemonFromApiById = async (id) => {
 
 const getPokemonFromDbById = async (id) => {
   try {
-    const pokemonFromDbById = await Pokemon.findOne({
+    const pokemonFromDb = await Pokemon.findOne({
       where: { id },
       include: {
         model: Type,
@@ -114,8 +114,8 @@ const getPokemonFromDbById = async (id) => {
       },
     });
 
-    if (!pokemonFromDbById) return null;
-    return pokemonFromDbById;
+    if (!pokemonFromDb) return null;
+    return pokemonFromDb;
   } catch (error) {
     console.log(`Pokemon with id: ${id} not found in DB`, error);
   }
@@ -165,14 +165,14 @@ const getPokemonFromApiByName = async (name) => {
       }),
     };
   } catch (error) {
-    console.log(`Pokemon ${name} not found in API`, error);
+    console.log(`Pokemon ${name} not found in API`);
   }
 };
 
 
 const getPokemonFromDbByName = async (name) => {
   try {
-    const pokemonFromDbByName = await Pokemon.findOne({
+    const pokemonFromDb = await Pokemon.findOne({
       where: { name },
       include: {
         model: Type,
@@ -181,10 +181,10 @@ const getPokemonFromDbByName = async (name) => {
       },
     });
 
-    if(!pokemonFromDbByName) return null;
-    return pokemonFromDbByName;
+    if(!pokemonFromDb) return null;
+    return pokemonFromDb;
   } catch (error) {
-    console.log(`Pokemon ${name} not found in DB`, error);
+    console.log(`Pokemon ${name} not found in DB`);
   }
 };
 

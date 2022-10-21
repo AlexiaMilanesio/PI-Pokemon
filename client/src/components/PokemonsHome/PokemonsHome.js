@@ -22,11 +22,13 @@ const PokemonsHome = (props) => {
 
   const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
   const pagination = (pageNumber) => setPage(pageNumber);
+
   // ------------------------------------------------------------- //
 
   useEffect(() => {
     dispatch(getAllPokemons());
   }, [dispatch]);
+
 
   return (
     <div className="pokemons-container">
@@ -40,23 +42,22 @@ const PokemonsHome = (props) => {
 
         <div className="main-container">
           <div className="cards-container">
-            {currentPokemons &&
-              currentPokemons.map((pokemon) => {
-                return (
-                  <Link
-                    to={`pokemon/${pokemon.id}`}
+            {currentPokemons && currentPokemons.map((pokemon) => {
+              return (
+                <Link
+                  to={`pokemon/${pokemon.id}`}
+                  key={pokemon.id}
+                  className="pokemon-card-container"
+                >
+                  <PokemonCard
                     key={pokemon.id}
-                    className="pokemon-card-container"
-                  >
-                    <PokemonCard
-                      key={pokemon.id}
-                      image={pokemon.image}
-                      name={pokemon.name}
-                      types={pokemon.types}
-                    />
-                  </Link>
-                );
-              })}
+                    image={pokemon.image}
+                    name={pokemon.name}
+                    types={pokemon.types}
+                  />
+                </Link>
+              );
+            })}
           </div>
 
           <Pagination

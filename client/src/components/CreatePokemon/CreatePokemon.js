@@ -45,9 +45,6 @@ const CreatePokemon = (props) => {
       ...formData,
       [name]: value,
     }));
-
-    console.log(formData) //TODO BORRAR
-    console.log(formErrors) //TODO BORRAR
   };
 
 
