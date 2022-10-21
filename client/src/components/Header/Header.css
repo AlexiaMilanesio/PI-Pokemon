@@ -76,6 +76,7 @@ ion-icon {
 
 .search-input:focus {
   outline: none;
+  background-color: rgb(241, 230, 230);
 }
 
 /* Get rid of cross */

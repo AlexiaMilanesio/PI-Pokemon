@@ -14,9 +14,9 @@ const PokemonsHome = (props) => {
 
   // -------------------------Pagination-------------------------- //
 
-  const [order, setOrder] = useState("");
   const [page, setPage] = useState(1);
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
+  const [order, setOrder] = useState("");
   const indexOfLastPokemon = page * pokemonsPerPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
 

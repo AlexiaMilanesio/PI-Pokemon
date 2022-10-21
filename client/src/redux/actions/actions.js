@@ -64,7 +64,7 @@ export const getPokemonByName = (name) => {
         );
     } catch (error) {
       console.log("Actions-getPokemonByName error", error);
-      // alert("Pokemon not found, try a different name."); 
+      alert("Pokemon not found, try a different name."); 
     }
   };
 };
@@ -147,36 +147,6 @@ export const getPokemonsFromDb = () => {
 };
 
 
-// Order by attack
-export const orderByAttackAsc = () => {
-  return async (dispatch) => {
-    try {
-      return await axios
-        .get(`${URL_POKEMONS}/orderAttackAsc`)
-        .then((response) =>
-          dispatch({ type: ORDER_BY_ATTACK_ASC, payload: response.data })
-        );
-    } catch (error) {
-      console.log("Actions-orderByAttackAsc error", error);
-    }
-  };
-};
-
-export const orderByAttackDesc = () => {
-  return async (dispatch) => {
-    try {
-      return await axios
-        .get(`${URL_POKEMONS}/orderAttackDesc`)
-        .then((response) =>
-          dispatch({ type: ORDER_BY_ATTACK_DESC, payload: response.data })
-        );
-    } catch (error) {
-      console.log("Actions-orderByAttackDesc error", error);
-    }
-  };
-};
-
-
 // Order by name
 export const orderByNameAsc = () => {
   return { type: ORDER_BY_NAME_ASC }; 
@@ -184,6 +154,38 @@ export const orderByNameAsc = () => {
 
 export const orderByNameDesc = () => {
   return { type: ORDER_BY_NAME_DESC };
+};
+
+
+// Order by attack
+export const orderByAttackAsc = () => { 
+  return { type: ORDER_BY_ATTACK_ASC }
+  // return async (dispatch) => { // TODO BORRAR
+  //   try {
+  //     return await axios
+  //       .get(`${URL_POKEMONS}/orderAttackAsc`)
+  //       .then((response) =>
+  //         dispatch({ type: ORDER_BY_ATTACK_ASC, payload: response.data })
+  //       );
+  //   } catch (error) {
+  //     console.log("Actions-orderByAttackAsc error", error);
+  //   }
+  // };
+};
+
+export const orderByAttackDesc = () => { 
+  return { type: ORDER_BY_ATTACK_DESC }
+  // return async (dispatch) => { // TODO BORRAR
+  //   try {
+  //     return await axios
+  //       .get(`${URL_POKEMONS}/orderAttackDesc`)
+  //       .then((response) =>
+  //         dispatch({ type: ORDER_BY_ATTACK_DESC, payload: response.data })
+  //       );
+  //   } catch (error) {
+  //     console.log("Actions-orderByAttackDesc error", error);
+  //   }
+  // };
 };
 
 

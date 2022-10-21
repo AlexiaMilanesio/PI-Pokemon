@@ -14,7 +14,7 @@ const Header = (props) => {
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSearch = (e) => {
     e.preventDefault();
     dispatch(getPokemonByName(name));
     setName("");
@@ -47,7 +47,7 @@ const Header = (props) => {
       </div>
 
       {/* SearchBar */}
-      <form onSubmit={(e) => handleSubmit(e)} className="search-engine-container">
+      <div className="search-engine-container">
         <input
           type="search" 
           placeholder="Search pokemon"
@@ -56,10 +56,14 @@ const Header = (props) => {
           value={name}
           onChange={(e) => handleChange(e)}
         />
-        <button type="submit" className="search-pokemon-btn">
+        <button 
+          type="submit" 
+          className="search-pokemon-btn" 
+          onClick={(e) => handleSearch(e)}
+        >
           Search
         </button>
-      </form>
+      </div>
 
     </div>
   );

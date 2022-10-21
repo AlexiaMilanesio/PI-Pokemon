@@ -19,8 +19,8 @@ import pokemonLogo from "../../images/pokemon-logo.png";
 import "./ControlPanel.css";
 
 const Filters = (props) => {
-  const types = useSelector((state) => state.types);
   const dispatch = useDispatch();
+  const types = useSelector((state) => state.types);
 
 
   useEffect(() => {
@@ -29,22 +29,21 @@ const Filters = (props) => {
 
 
   const handleOriginSelection = (e) => {
-    e.preventDefault();
     if (e.target.value === "All") dispatch(getAllPokemons());
     if (e.target.value === "Existing") dispatch(getPokemonsFromApi());
     if (e.target.value === "Created") dispatch(getPokemonsFromDb());
     props.setPage(1);
+    props.setOrder(e.target.value);
   };
 
   const handleTypeSelection = (e) => {
-    e.preventDefault();
     if (e.target.value === "All") dispatch(getAllPokemons());
     dispatch(filterTypes(e.target.value));
     props.setPage(1);
+    props.setOrder(e.target.value);
   };
 
   const handleNameOrder = (e) => {
-    e.preventDefault();
     if (e.target.value === "Asc") dispatch(orderByNameAsc());
     if (e.target.value === "Desc") dispatch(orderByNameDesc());
     props.setPage(1);
@@ -52,19 +51,17 @@ const Filters = (props) => {
   };
 
   const handleAttackOrder = (e) => {
-    e.preventDefault();
     if (e.target.value === "Asc") dispatch(orderByAttackAsc()); 
     if (e.target.value === "Desc") dispatch(orderByAttackDesc());
     props.setPage(1);
-    props.setOrder(e.target.value); // TODO Si lo borro funciona igual
+    props.setOrder(e.target.value);
   };
 
   const handleSpeedOrder = (e) => {
-    e.preventDefault();
     if (e.target.value === "Asc") dispatch(orderBySpeedAsc()); 
     if (e.target.value === "Desc") dispatch(orderBySpeedDesc());
     props.setPage(1);
-    props.setOrder(e.target.value); // TODO Si lo borro funciona igual
+    props.setOrder(e.target.value);
   };
 
   const handleClearFilters = (e) => {
@@ -72,6 +69,7 @@ const Filters = (props) => {
     dispatch(clearFilters());
     dispatch(getAllPokemons());
   }
+
 
   
   return (

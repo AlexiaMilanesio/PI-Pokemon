@@ -8,8 +8,8 @@ const {
   getPokemonById,
   getPokemonByName,
   createPokemon,
-  orderAttackAsc,
-  orderAttackDesc,
+  // orderAttackAsc,
+  // orderAttackDesc,
 } = require("../controllers/pokemon-controller");
 
 const router = Router();
@@ -51,24 +51,25 @@ router.get("/pokemonsDb", async (req, res) => {
 });
 
 
-// Order by attack
-router.get("/orderAttackAsc", async (req, res) => {
-  try {
-    const result = await orderAttackAsc();
-    res.status(200).send(result);
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-});
+// Order by attack // TODO BORRAR
 
-router.get("/orderAttackDesc", async (req, res) => {
-  try {
-    const result = await orderAttackDesc();
-    res.status(200).send(result);
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-});
+// router.get("/orderAttackAsc", async (req, res) => {
+//   try {
+//     const result = await orderAttackAsc();
+//     res.status(200).send(result);
+//   } catch (error) {
+//     res.status(400).send(error.message);
+//   }
+// });
+
+// router.get("/orderAttackDesc", async (req, res) => {
+//   try {
+//     const result = await orderAttackDesc();
+//     res.status(200).send(result);
+//   } catch (error) {
+//     res.status(400).send(error.message);
+//   }
+// });
 
 
 router.get("/:id", async (req, res) => {

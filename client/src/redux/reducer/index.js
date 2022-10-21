@@ -102,7 +102,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_NAME_ASC:
       return {
         ...state,
-        pokemons: state.pokemonsToFilter.sort((a, b) =>
+        pokemons: state.pokemons.sort((a, b) =>
           a.name > b.name ? 1 : a.name < b.name ? -1 : 0
         ),
       };
@@ -110,7 +110,7 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_NAME_DESC:
       return {
         ...state,
-        pokemons: state.pokemonsToFilter.sort((a, b) =>
+        pokemons: state.pokemons.sort((a, b) =>
           a.name < b.name ? 1 : a.name > b.name ? -1 : 0
         ),
       };
@@ -118,13 +118,13 @@ const rootReducer = (state = initialState, action) => {
     case ORDER_BY_ATTACK_ASC:
       return {
         ...state,
-        pokemons: action.payload,
+        pokemons: state.pokemons.sort((a, b) => a.attack - b.attack),
       };
 
     case ORDER_BY_ATTACK_DESC:
       return {
         ...state,
-        pokemons: action.payload,
+        pokemons: state.pokemons.sort((a, b) => b.attack - a.attack),
       };
 
     case ORDER_BY_SPEED_ASC:

@@ -100,6 +100,7 @@ option {
   box-shadow: 0 3px black;
   transform: translateY(2px);
 }
+
 .clear-filters-btn:visited {
   background-color: rgb(241, 230, 230);
   color: black;

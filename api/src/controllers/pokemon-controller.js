@@ -230,27 +230,27 @@ const createPokemon = async (name, hp, attack, defense, speed, height, weight, i
 };
 
 
-// Order pokemons by speed
-const orderAttackAsc = async () => {
-  try {
-    let allPokemons = await getAllPokemons();
-    let pokemonSortedAsc = allPokemons.sort((a, b) => a.attack - b.attack);
-    return pokemonSortedAsc;
-  } catch (error) {
-    console.log("There's been a problem while asc ordering pokemons", error);
-  }
-};
+// Order pokemons by attack // TODO BORRAR
 
+// const orderAttackAsc = async () => {
+//   try {
+//     let allPokemons = await getAllPokemons();
+//     let pokemonSortedAsc = allPokemons.sort((a, b) => a.attack - b.attack);
+//     return pokemonSortedAsc;
+//   } catch (error) {
+//     console.log("There's been a problem while asc ordering pokemons", error);
+//   }
+// };
 
-const orderAttackDesc = async () => {
-  try {
-    let allPokemons = await getAllPokemons();
-    let pokemonsSortedDesc = allPokemons.sort((a, b) => b.attack - a.attack);
-    return pokemonsSortedDesc;
-  } catch (error) {
-    console.log("There's been a problem while desc ordering pokemons", error);
-  }
-};
+// const orderAttackDesc = async () => {
+//   try {
+//     let allPokemons = await getAllPokemons();
+//     let pokemonsSortedDesc = allPokemons.sort((a, b) => b.attack - a.attack);
+//     return pokemonsSortedDesc;
+//   } catch (error) {
+//     console.log("There's been a problem while desc ordering pokemons", error);
+//   }
+// };
 
 
 module.exports = {
@@ -260,6 +260,6 @@ module.exports = {
   getPokemonById,
   getPokemonByName,
   createPokemon,
-  orderAttackAsc,
-  orderAttackDesc
+  // orderAttackAsc,
+  // orderAttackDesc
 };
