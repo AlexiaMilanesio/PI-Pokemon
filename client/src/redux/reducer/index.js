@@ -66,7 +66,7 @@ const rootReducer = (state = initialState, action) => {
       }
 
     case FILTER_TYPES:
-      let filteredType = state.pokemonsToFilter.filter((pokemon) => {
+      let filteredType = state.pokemons.filter((pokemon) => {
         if (pokemon.types) {
           // Creamos un array con todos los nombres de los types
           let typeNames = pokemon.types.map((type) => type.name);
@@ -80,19 +80,18 @@ const rootReducer = (state = initialState, action) => {
         }
         return null;
       });
-
+        
       return {
         ...state,
-        pokemons:
-          filteredType === "All" ? state.pokemonsToFilter : filteredType,
+        pokemons: filteredType === "All" ? state.pokemons : filteredType,
       };
-
+        
     case FILTER_POKEMONS_FROM_API:
       return {
         ...state,
         pokemons: action.payload,
       };
-
+    
     case FILTER_POKEMONS_FROM_DB:
       return {
         ...state,
@@ -142,6 +141,7 @@ const rootReducer = (state = initialState, action) => {
     case CLEAR_FILTERS:
       return {
         ...state,
+        pokemons: action.payload,
         pokemonsToFilter: action.payload,
       };
 

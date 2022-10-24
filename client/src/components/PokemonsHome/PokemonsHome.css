@@ -12,6 +12,7 @@
   -moz-background-size: cover;  
   -o-background-size: cover;
   background-size: cover;
+  padding-bottom: 1em;
 }
 
 .pokemons-content {
@@ -69,21 +70,6 @@
   padding: 5em 1em 17em 1em;
   font-size: 1.5em;
 }
-
-
-/* Footer  */
-.home-footer {
-  margin: 5em 0 1em 0;
-  padding: 1em 0;
-  font-size: .9rem;
-  color: rgb(241, 230, 230);
-  background-color: black;
-}
-
-.home-footer > p {
-  padding: .2em 0;
-}
-
 
 
 /* Media queries */

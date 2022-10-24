@@ -70,7 +70,6 @@ const Filters = (props) => {
     dispatch(getAllPokemons());
   }
 
-
   
   return (
     <div className="control-panel-container">

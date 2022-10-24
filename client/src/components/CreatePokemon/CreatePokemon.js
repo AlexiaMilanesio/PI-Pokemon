@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getAllTypes } from "../../redux/actions/actions";
 import validateForm from "./Validation";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 import "./CreatePokemon.css";
 
 const CreatePokemon = (props) => {
@@ -219,10 +220,7 @@ const CreatePokemon = (props) => {
         </div>
       </form>
 
-      <div className="form-footer">
-        <p>Created by Zarina Alexía Milanesio</p>
-        <p>Henry Student - 2022</p>
-      </div>
+      <Footer />
     </div>
   );
 };

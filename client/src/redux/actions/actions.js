@@ -65,7 +65,6 @@ export const getPokemonByName = (name) => {
 
     } catch (error) {
       console.log("Actions-getPokemonByName error", error);
-      // alert("Pokemon not found, try a different name."); 
     }
   };
 };
@@ -85,7 +84,7 @@ export const createPokemon = (pokemon) => {
 };
 
 
-// Delete pokemon //TODO
+// Delete pokemon
 export const deletePokemon = (id) => {
   try {
     return { type: DELETE_POKEMON, payload: id }

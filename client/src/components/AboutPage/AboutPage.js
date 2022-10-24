@@ -75,7 +75,8 @@ const AboutPage = (props) => {
                   rel="noreferrer"
                   className="contact-social-link"
                 >
-                  <ion-icon name="logo-github"></ion-icon> AlexiaMilanesio
+                  <ion-icon name="logo-github"></ion-icon> 
+                  <p>AlexiaMilanesio</p>
                 </a>
               </li>
               <li className="contact-li">
@@ -85,8 +86,8 @@ const AboutPage = (props) => {
                   rel="noreferrer"
                   className="contact-social-link"
                 >
-                  <ion-icon name="logo-linkedin"></ion-icon>{" "}
-                  zarina-alexia-milanesio
+                  <ion-icon name="logo-linkedin"></ion-icon>
+                  <p>zarina-alexia-milanesio</p>
                 </a>
               </li>
               <li className="contact-li">
@@ -96,7 +97,8 @@ const AboutPage = (props) => {
                   rel="noreferrer"
                   className="contact-social-link"
                 >
-                  <ion-icon name="logo-instagram"></ion-icon> alemilanesio
+                  <ion-icon name="logo-instagram"></ion-icon>
+                  <p>alemilanesio</p>
                 </a>
               </li>
               <li className="contact-li contact-text">
@@ -104,13 +106,15 @@ const AboutPage = (props) => {
                   href="mailto:alexiamilanesio9@gmail.com"
                   className="contact-social-link"
                 >
-                  <ion-icon name="mail"></ion-icon> alexiamilanesio9@gmail.com
+                  <ion-icon name="mail"></ion-icon>
+                  <p>alexiamilanesio9@gmail.com</p>
                 </a>
               </li>
             </div>
           </ul>
         </div>
       </div>
+
     </div>
   );
 };

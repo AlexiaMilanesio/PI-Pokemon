@@ -6,6 +6,7 @@ import Header from "../Header/Header";
 import ControlPanel from "../ControlPanel/ControlPanel";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import Pagination from "../Pagination/Pagination";
+import Footer from "../Footer/Footer";
 import "./PokemonsHome.css";
 
 const PokemonsHome = (props) => {
@@ -73,10 +74,7 @@ const PokemonsHome = (props) => {
         </div>
       </div>
 
-      <div className="home-footer">
-        <p>Created by Zarina Alexía Milanesio</p>
-        <p>Henry Student - 2022</p>
-      </div>
+      <Footer />
     </div>
   );
 };
