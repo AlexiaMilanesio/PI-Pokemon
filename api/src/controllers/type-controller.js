@@ -4,6 +4,7 @@ const { Type } = require("../db");
 
 const url = "https://pokeapi.co/api/v2/type";
 
+
 const getTypes = async () => {
   try {
     // Request types to API
@@ -30,5 +31,6 @@ const getTypes = async () => {
     console.log("There's been an error while getting the types", error);
   }
 };
+
 
 module.exports = { getTypes };

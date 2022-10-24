@@ -3,7 +3,9 @@ const { getTypes } = require("../controllers/type-controller");
 
 const router = Router();
 
-// TYPES ROUTES
+
+// --------------------- TYPE ROUTES --------------------- //
+
 router.get("/", async (req, res) => {
   try {
     const result = await getTypes();
@@ -12,5 +14,6 @@ router.get("/", async (req, res) => {
     res.status(400).send(error.message);
   }
 });
+
 
 module.exports = router;

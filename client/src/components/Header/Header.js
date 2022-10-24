@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getPokemonByName } from "../../redux/actions/actions";
+import NavBar from "./NavBar/NavBar";
 import "./Header.css";
 
 const Header = (props) => {
@@ -13,9 +13,11 @@ const Header = (props) => {
     setName(e.target.value.toLowerCase());
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") handleSearch();
+  }
 
   const handleSearch = (e) => {
-    e.preventDefault();
     dispatch(getPokemonByName(name));
     setName("");
   };
@@ -23,30 +25,8 @@ const Header = (props) => {
 
   return (
     <div className="header-container">
+      <NavBar />
 
-      {/* NavBar */}
-      <div className="nav-container">
-        <Link to="/pokemon" className="link">
-          <button className="nav-btn">
-            <ion-icon name="home" className="nav-icon"></ion-icon>
-            <span>Home</span>
-          </button>
-        </Link>
-        <Link to="/create" className="link">
-          <button className="nav-btn">
-            <ion-icon name="create" className="nav-icon"></ion-icon>
-            <span>Create</span>
-          </button>
-        </Link>
-        <Link to="/about" className="link">
-          <button className="nav-btn">
-            <ion-icon name="information-circle" className="nav-icon"></ion-icon>
-            <span>About</span>
-          </button>
-        </Link>
-      </div>
-
-      {/* SearchBar */}
       <div className="search-engine-container">
         <input
           type="search" 
@@ -55,6 +35,7 @@ const Header = (props) => {
           name="name"
           value={name}
           onChange={(e) => handleChange(e)}
+          onKeyPress={(e) => handleKeyPress(e)}
         />
         <button 
           type="submit" 

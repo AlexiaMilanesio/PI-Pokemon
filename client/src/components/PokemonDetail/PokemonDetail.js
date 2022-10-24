@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePokemon, getPokemonById } from "../../redux/actions/actions";
-import Header from "../Header/Header";
+import NavBar from "../Header/NavBar/NavBar";
 import pokemonName from "../../images/pokemon-name-logo.png";
 import "./PokemonDetail.css";
 
@@ -30,7 +30,7 @@ const PokemonDetail = (props) => {
 
   return (
     <div className="detail-container">
-      <Header />
+      <NavBar />
 
       <div className="detail-content-container">
         <button className="delete-pokemon-btn" onClick={(e) => handleDelete(e)}>Delete</button>

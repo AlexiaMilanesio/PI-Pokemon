@@ -12,12 +12,12 @@ export const FILTER_TYPES = "FILTER_TYPES";
 export const FILTER_POKEMONS_FROM_API = "FILTER_POKEMONS_FROM_API";
 export const FILTER_POKEMONS_FROM_DB = "FILTER_POKEMONS_FROM_DB";
 
-export const ORDER_BY_ATTACK_ASC = "ORDER_BY_ATTACK_ASC";
-export const ORDER_BY_ATTACK_DESC = "ORDER_BY_ATTACK_DESC";
-export const ORDER_BY_NAME_ASC = "ORDER_BY_NAME_ASC";
-export const ORDER_BY_NAME_DESC = "ORDER_BY_NAME_DESC";
-export const ORDER_BY_SPEED_ASC = "ORDER_BY_SPEED_ASC"; 
-export const ORDER_BY_SPEED_DESC = "ORDER_BY_SPEED_DESC"; 
+export const SORT_BY_ATTACK_ASC = "SORT_BY_ATTACK_ASC";
+export const SORT_BY_ATTACK_DESC = "SORT_BY_ATTACK_DESC";
+export const SORT_BY_NAME_ASC = "SORT_BY_NAME_ASC";
+export const SORT_BY_NAME_DESC = "SORT_BY_NAME_DESC";
+export const SORT_BY_SPEED_ASC = "SORT_BY_SPEED_ASC"; 
+export const SORT_BY_SPEED_DESC = "SORT_BY_SPEED_DESC"; 
 
 export const CLEAR_FILTERS = "CLEAR_FILTERS";
 
@@ -110,12 +110,13 @@ export const getAllTypes = () => {
 };
 
 
-// ----------------Filtrados y ordenamientos---------------- //
+// ----------------- Filtering and Sorting ----------------- //
 
 // Filter by type
 export const filterTypes = (type) => {
   return { type: FILTER_TYPES, payload: type };
 };
+
 
 // Filter by origin
 export const getPokemonsFromApi = () => {
@@ -147,33 +148,33 @@ export const getPokemonsFromDb = () => {
 };
 
 
-// Order by name
-export const orderByNameAsc = () => {
-  return { type: ORDER_BY_NAME_ASC }; 
+// Sort by name
+export const sortByNameAsc = () => {
+  return { type: SORT_BY_NAME_ASC }; 
 };
 
-export const orderByNameDesc = () => {
-  return { type: ORDER_BY_NAME_DESC };
-};
-
-
-// Order by attack
-export const orderByAttackAsc = () => { 
-  return { type: ORDER_BY_ATTACK_ASC }
-};
-
-export const orderByAttackDesc = () => { 
-  return { type: ORDER_BY_ATTACK_DESC }
+export const sortByNameDesc = () => {
+  return { type: SORT_BY_NAME_DESC };
 };
 
 
-// Order by name
-export const orderBySpeedAsc = () => {
-  return { type: ORDER_BY_SPEED_ASC };
+// Sort by attack
+export const sortByAttackAsc = () => { 
+  return { type: SORT_BY_ATTACK_ASC }
 };
 
-export const orderBySpeedDesc = () => { 
-  return { type: ORDER_BY_SPEED_DESC };
+export const sortByAttackDesc = () => { 
+  return { type: SORT_BY_ATTACK_DESC }
+};
+
+
+// Sort by name
+export const sortBySpeedAsc = () => {
+  return { type: SORT_BY_SPEED_ASC };
+};
+
+export const sortBySpeedDesc = () => { 
+  return { type: SORT_BY_SPEED_DESC };
 };
 
 

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getAllTypes } from "../../redux/actions/actions";
 import validateForm from "./Validation";
-import Header from "../Header/Header";
+import NavBar from "../Header/NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import "./CreatePokemon.css";
 
@@ -75,7 +75,7 @@ const CreatePokemon = (props) => {
 
   return (
     <div className="form-component-container">
-      <Header />
+      <NavBar />
 
       <form onSubmit={(e) => handleSubmit(e)} className="form-container">
         <h3 className="form-title">Create your own Pokemon</h3>

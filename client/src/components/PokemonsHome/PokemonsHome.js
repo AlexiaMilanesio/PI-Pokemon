@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllPokemons } from "../../redux/actions/actions";
 import Header from "../Header/Header";
-import ControlPanel from "../ControlPanel/ControlPanel";
+import ControlPanel from "./ControlPanel/ControlPanel";
 import PokemonCard from "../PokemonCard/PokemonCard";
 import Pagination from "../Pagination/Pagination";
 import Footer from "../Footer/Footer";
@@ -13,7 +13,7 @@ const PokemonsHome = (props) => {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemons);
 
-  // -------------------------Pagination-------------------------- //
+  // ------------------------- Pagination -------------------------- //
 
   const [page, setPage] = useState(1);
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
@@ -23,13 +23,12 @@ const PokemonsHome = (props) => {
   const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
   const pagination = (pageNumber) => setPage(pageNumber); 
 
-  // ------------------------------------------------------------- //
+  // --------------------------------------------------------------- //
 
   useEffect(() => {
     dispatch(getAllPokemons());
   }, [dispatch]);
 
-  console.log(currentPokemons)
 
   return (
     <div className="pokemons-container">

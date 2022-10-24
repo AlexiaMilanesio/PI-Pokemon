@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-// Controllers imports:
+// Controllers imports
 const {
   getPokemonsFromApi,
   getPokemonsFromDb,
@@ -8,13 +8,13 @@ const {
   getPokemonById,
   getPokemonByName,
   createPokemon,
-  // orderAttackAsc,
-  // orderAttackDesc,
 } = require("../controllers/pokemon-controller");
 
 const router = Router();
 
-// POKEMON ROUTES
+
+// --------------------- POKEMON ROUTES --------------------- //
+
 router.get("/", async (req, res) => {
   const { name } = req.query;
   try {
@@ -51,26 +51,6 @@ router.get("/pokemonsDb", async (req, res) => {
 });
 
 
-// Order by attack // TODO BORRAR
-
-// router.get("/orderAttackAsc", async (req, res) => {
-//   try {
-//     const result = await orderAttackAsc();
-//     res.status(200).send(result);
-//   } catch (error) {
-//     res.status(400).send(error.message);
-//   }
-// });
-
-// router.get("/orderAttackDesc", async (req, res) => {
-//   try {
-//     const result = await orderAttackDesc();
-//     res.status(200).send(result);
-//   } catch (error) {
-//     res.status(400).send(error.message);
-//   }
-// });
-
 
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
@@ -98,5 +78,6 @@ router.post("/", async (req, res) => {
     res.status(404).send(error.message);
   }
 });
+
 
 module.exports = router;

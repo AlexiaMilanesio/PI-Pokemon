@@ -76,32 +76,23 @@ option {
   border: 2px solid black;
   border-radius: 10px;
   box-shadow: 0 0 5px rgb(69, 69, 69);
-  background-color: rgb(241, 230, 230);
-  color: black; 
+  background-color: rgb(220, 41, 10);
+  color: rgb(241, 230, 230);
   font-family: inherit;
   font-size: inherit;
   transition: transform 200ms ease-in-out;
 }
 
 .clear-filters-btn:hover {
-  color: rgb(241, 230, 230);
-  background-color: rgb(220, 41, 10);
   transform: scale(1.05);
   cursor: pointer;
 }
 
 .clear-filters-btn:focus {
   outline: none;
-  background-color: rgb(241, 230, 230);
-  color: black;
 }
 
 .clear-filters-btn:active {
   box-shadow: 0 3px black;
   transform: translateY(2px);
-}
-
-.clear-filters-btn:visited {
-  background-color: rgb(241, 230, 230);
-  color: black;
 }

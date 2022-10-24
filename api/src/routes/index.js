@@ -1,5 +1,5 @@
 const { Router } = require('express');
-// Routers imports:
+// Routers imports
 const pokemonRoute = require("./pokemon-routes");
 const typeRoute = require("./type-routes");
 

@@ -7,15 +7,15 @@ import {
   filterTypes,
   getAllPokemons,
   getAllTypes,
-  orderByAttackAsc,
-  orderByAttackDesc,
-  orderByNameAsc, 
-  orderByNameDesc,
+  sortByAttackAsc,
+  sortByAttackDesc,
+  sortByNameAsc, 
+  sortByNameDesc,
   clearFilters,
-  orderBySpeedAsc,
-  orderBySpeedDesc,
-} from "../../redux/actions/actions";
-import pokemonLogo from "../../images/pokemon-logo.png";
+  sortBySpeedAsc,
+  sortBySpeedDesc,
+} from "../../../redux/actions/actions";
+import pokemonLogo from "../../../images/pokemon-logo.png";
 import "./ControlPanel.css";
 
 const Filters = (props) => {
@@ -33,7 +33,7 @@ const Filters = (props) => {
     if (e.target.value === "Existing") dispatch(getPokemonsFromApi());
     if (e.target.value === "Created") dispatch(getPokemonsFromDb());
     props.setPage(1);
-    props.setOrder(e.target.value);
+    props.setOrder(e.target.value); // Setting order in local state for combining filters/sorting
   };
 
   const handleTypeSelection = (e) => {
@@ -43,29 +43,31 @@ const Filters = (props) => {
     props.setOrder(e.target.value);
   };
 
-  const handleNameOrder = (e) => {
-    if (e.target.value === "Asc") dispatch(orderByNameAsc());
-    if (e.target.value === "Desc") dispatch(orderByNameDesc());
+  const handleNameSort = (e) => {
+    if (e.target.value === "Asc") dispatch(sortByNameAsc());
+    if (e.target.value === "Desc") dispatch(sortByNameDesc());
     props.setPage(1);
-    props.setOrder(e.target.value); // Setting order in local state
+    props.setOrder(e.target.value); 
   };
 
-  const handleAttackOrder = (e) => {
-    if (e.target.value === "Asc") dispatch(orderByAttackAsc()); 
-    if (e.target.value === "Desc") dispatch(orderByAttackDesc());
+  const handleAttackSort = (e) => {
+    if (e.target.value === "Asc") dispatch(sortByAttackAsc()); 
+    if (e.target.value === "Desc") dispatch(sortByAttackDesc());
     props.setPage(1);
     props.setOrder(e.target.value);
   };
 
-  const handleSpeedOrder = (e) => {
-    if (e.target.value === "Asc") dispatch(orderBySpeedAsc()); 
-    if (e.target.value === "Desc") dispatch(orderBySpeedDesc());
+  const handleSpeedSort = (e) => {
+    if (e.target.value === "Asc") dispatch(sortBySpeedAsc()); 
+    if (e.target.value === "Desc") dispatch(sortBySpeedDesc());
     props.setPage(1);
     props.setOrder(e.target.value);
   };
 
   const handleClearFilters = (e) => {
     e.preventDefault();
+    // Resetting default values of all select html elements
+    document.getElementsByTagName("select").selectedIndex = "";
     dispatch(clearFilters());
     dispatch(getAllPokemons());
   }
@@ -88,7 +90,7 @@ const Filters = (props) => {
         <option value="Created">Created</option>
       </select>
 
-      {/* Filter by pokemon type */}
+      {/* Sort by pokemon type */}
       <p className="order-filter-name">Type</p>
       <select onChange={(e) => handleTypeSelection(e)}>
         <option value="" disabled>Select type</option>
@@ -98,32 +100,35 @@ const Filters = (props) => {
             <option key={type.id} value={type.name}>
               {type.name.charAt(0).toUpperCase() + type.name.slice(1)}
             </option>
-          );
+          );  
         })}
       </select>
 
-      <p className="section-title order">Order by:</p>
+      <p className="section-title order">Sort by:</p>
 
-      {/* Order by name */}
+      {/* Sort by name */}
       <p className="order-filter-name">Name</p>
-      <select onChange={(e) => handleNameOrder(e)}>
-        <option value="" disabled>Order by name</option>
+      <select onChange={(e) => handleNameSort(e)}>
+        <option value="" disabled>Sort by name</option>
+        <option value="NotSorted">Not sorted</option>
         <option value="Asc">Ascending &#40;A-Z&#41;</option>
         <option value="Desc">Descending &#40;Z-A&#41;</option>
       </select>
 
-      {/* Order by attack */}
+      {/* Sort by attack */}
       <p className="order-filter-name">Attack</p>
-      <select onChange={(e) => handleAttackOrder(e)}>
-        <option value="" disabled>Order by attack</option>
+      <select onChange={(e) => handleAttackSort(e)}>
+        <option value="" disabled>Sort by attack</option>
+        <option value="NotSorted">Not sorted</option>
         <option value="Asc">Ascending &#40;A-Z&#41;</option>
         <option value="Desc">Descending &#40;Z-A&#41;</option>
       </select>
 
-      {/* Order by speed */}
+      {/* Sort by speed */}
       <p className="order-filter-name">Speed</p>
-      <select onChange={(e) => handleSpeedOrder(e)}>
-        <option value="" disabled>Order by speed</option>
+      <select onChange={(e) => handleSpeedSort(e)}>
+        <option value="" disabled>Sort by speed</option>
+        <option value="NotSorted">Not sorted</option>
         <option value="Asc">Ascending &#40;A-Z&#41;</option>
         <option value="Desc">Descending &#40;Z-A&#41;</option>
       </select>
@@ -131,7 +136,7 @@ const Filters = (props) => {
 
       <button className="clear-filters-btn" onClick={(e) => handleClearFilters(e)}>
         <ion-icon name="trash"></ion-icon>
-        Clear filters
+        <p>Clear filters</p>
       </button>
     </div>
   );

@@ -122,6 +122,8 @@
 
 .contact-social-link:hover {
   transform: scale(1.02);
+  color: rgb(223, 55, 26);
+  text-shadow: 0 0 2px black;
 }
 
 .contact-li {

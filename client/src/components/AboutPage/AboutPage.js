@@ -1,24 +1,24 @@
 import React from "react";
-import Header from "../Header/Header";
+import NavBar from "../Header/NavBar/NavBar";
 import "./AboutPage.css";
 
 const AboutPage = (props) => {
   return (
     <div className="about-component-container">
-      <Header />
+      <NavBar />
 
       <div className="about-container">
         <div className="about-app-container">
           <h3 className="about-title">About the app</h3>
           <div className="about-app-content-container">
             <p className="about-app-content">
-              This is a Pokemon App design by Zarina Alexía Milanesio - Henry
+              This is a Pokemon App, design by Zarina Alexía Milanesio - Henry
               Student 2022.
             </p>
             <br />
             <p className="about-app-content">
               You can use it to search for the pokemon you like the most, filter
-              the pokemons by type and origin, or order them by name or attack.
+              the pokemons by type and origin, or sort them by name or attack.
             </p>
             <br />
             <br />

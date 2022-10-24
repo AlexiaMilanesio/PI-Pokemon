@@ -9,12 +9,12 @@ import {
   FILTER_POKEMONS_FROM_API,
   FILTER_POKEMONS_FROM_DB,
   CLEAR_FILTERS,
-  ORDER_BY_NAME_ASC,
-  ORDER_BY_NAME_DESC,
-  ORDER_BY_ATTACK_ASC,
-  ORDER_BY_ATTACK_DESC,
-  ORDER_BY_SPEED_ASC,
-  ORDER_BY_SPEED_DESC,
+  SORT_BY_NAME_ASC,
+  SORT_BY_NAME_DESC,
+  SORT_BY_ATTACK_ASC,
+  SORT_BY_ATTACK_DESC,
+  SORT_BY_SPEED_ASC,
+  SORT_BY_SPEED_DESC,
 } from "../actions/actions";
 
 const initialState = {
@@ -98,7 +98,7 @@ const rootReducer = (state = initialState, action) => {
         pokemons: action.payload,
       };
 
-    case ORDER_BY_NAME_ASC:
+    case SORT_BY_NAME_ASC:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) =>
@@ -106,7 +106,7 @@ const rootReducer = (state = initialState, action) => {
         ),
       };
 
-    case ORDER_BY_NAME_DESC:
+    case SORT_BY_NAME_DESC:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) =>
@@ -114,25 +114,25 @@ const rootReducer = (state = initialState, action) => {
         ),
       };
 
-    case ORDER_BY_ATTACK_ASC:
+    case SORT_BY_ATTACK_ASC:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) => a.attack - b.attack),
       };
 
-    case ORDER_BY_ATTACK_DESC:
+    case SORT_BY_ATTACK_DESC:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) => b.attack - a.attack),
       };
 
-    case ORDER_BY_SPEED_ASC:
+    case SORT_BY_SPEED_ASC:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) => a.speed - b.speed),
       };
 
-    case ORDER_BY_SPEED_DESC:
+    case SORT_BY_SPEED_DESC:
       return {
         ...state,
         pokemons: state.pokemons.sort((a, b) => b.speed - a.speed),
