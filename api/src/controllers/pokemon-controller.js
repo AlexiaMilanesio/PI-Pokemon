@@ -197,7 +197,7 @@ const getPokemonByName = async (name) => {
 
     if (!pokemonApiByName) {
       if (!pokemonDbByName)
-        return `Pokemon not found. There's no pokemon with name ${name}`;
+        return "Pokemon not found";
       pokemonByName = pokemonDbByName;
     } else {
       pokemonByName = pokemonApiByName;
@@ -230,7 +230,7 @@ const createPokemon = async (name, hp, attack, defense, speed, height, weight, i
 };
 
 
-// Order pokemons by attack // TODO BORRAR
+// Order pokemons by attack
 
 // const orderAttackAsc = async () => {
 //   try {

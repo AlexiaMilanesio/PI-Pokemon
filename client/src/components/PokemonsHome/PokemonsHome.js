@@ -19,9 +19,8 @@ const PokemonsHome = (props) => {
   const [order, setOrder] = useState("");
   const indexOfLastPokemon = page * pokemonsPerPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
-
   const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
-  const pagination = (pageNumber) => setPage(pageNumber);
+  const pagination = (pageNumber) => setPage(pageNumber); 
 
   // ------------------------------------------------------------- //
 
@@ -29,6 +28,7 @@ const PokemonsHome = (props) => {
     dispatch(getAllPokemons());
   }, [dispatch]);
 
+  console.log(currentPokemons)
 
   return (
     <div className="pokemons-container">
@@ -42,22 +42,27 @@ const PokemonsHome = (props) => {
 
         <div className="main-container">
           <div className="cards-container">
-            {currentPokemons && currentPokemons.map((pokemon) => {
-              return (
-                <Link
-                  to={`pokemon/${pokemon.id}`}
-                  key={pokemon.id}
-                  className="pokemon-card-container"
-                >
-                  <PokemonCard
-                    key={pokemon.id}
-                    image={pokemon.image}
-                    name={pokemon.name}
-                    types={pokemon.types}
-                  />
-                </Link>
-              );
-            })}
+            {currentPokemons[0] !== "Pokemon not found"
+              ? currentPokemons.map((pokemon) => {
+                  return (
+                    <Link
+                      to={`pokemon/${pokemon.id}`}
+                      key={pokemon.id}
+                      className="pokemon-card-container"
+                    >
+                      <PokemonCard
+                        key={pokemon.id}
+                        image={pokemon.image}
+                        name={pokemon.name}
+                        types={pokemon.types}
+                      />
+                    </Link>
+                  );
+                })
+              : <p className="pokemon-not-found-message">
+                  {`${currentPokemons[0]}, please try a different name`}
+                </p>
+            }
           </div>
 
           <Pagination

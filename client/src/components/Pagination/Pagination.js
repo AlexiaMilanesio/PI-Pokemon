@@ -12,19 +12,18 @@ const Pagination = (props) => {
   return (
     <div className="pagination-container">
       <ul className="pagination-list">
-        {pageNumbers &&
-          pageNumbers.map((pageNumber) => {
-            return (
-              <div  key={pageNumber} className="pagination-number-container">
-                <li
-                  className="pagination-number"
-                  onClick={() => props.pagination(pageNumber)}
-                >
-                  {pageNumber}
-                </li>
-              </div>
-            );
-          })}
+        {pageNumbers && pageNumbers.map((pageNumber) => {
+          return (
+            <div  key={pageNumber} className="pagination-number-container">
+              <li
+                className="pagination-number"
+                onClick={() => props.pagination(pageNumber)} // Setear el número de página
+              >
+                {pageNumber}
+              </li>
+            </div>
+          );
+        })}
       </ul>
     </div>
   );

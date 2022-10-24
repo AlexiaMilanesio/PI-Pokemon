@@ -64,9 +64,16 @@
 }
 
 
+/* Pokemon not found */
+.pokemon-not-found-message {
+  padding: 5em 1em 17em 1em;
+  font-size: 1.5em;
+}
+
+
 /* Footer  */
 .home-footer {
-  margin: 3em 0 1em 0;
+  margin: 5em 0 1em 0;
   padding: 1em 0;
   font-size: .9rem;
   color: rgb(241, 230, 230);

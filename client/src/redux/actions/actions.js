@@ -62,9 +62,10 @@ export const getPokemonByName = (name) => {
         .then((response) =>
           dispatch({ type: GET_POKEMON_BY_NAME, payload: response.data })
         );
+
     } catch (error) {
       console.log("Actions-getPokemonByName error", error);
-      alert("Pokemon not found, try a different name."); 
+      // alert("Pokemon not found, try a different name."); 
     }
   };
 };
@@ -84,7 +85,7 @@ export const createPokemon = (pokemon) => {
 };
 
 
-// Delete pokemon
+// Delete pokemon //TODO
 export const deletePokemon = (id) => {
   try {
     return { type: DELETE_POKEMON, payload: id }
@@ -160,32 +161,10 @@ export const orderByNameDesc = () => {
 // Order by attack
 export const orderByAttackAsc = () => { 
   return { type: ORDER_BY_ATTACK_ASC }
-  // return async (dispatch) => { // TODO BORRAR
-  //   try {
-  //     return await axios
-  //       .get(`${URL_POKEMONS}/orderAttackAsc`)
-  //       .then((response) =>
-  //         dispatch({ type: ORDER_BY_ATTACK_ASC, payload: response.data })
-  //       );
-  //   } catch (error) {
-  //     console.log("Actions-orderByAttackAsc error", error);
-  //   }
-  // };
 };
 
 export const orderByAttackDesc = () => { 
   return { type: ORDER_BY_ATTACK_DESC }
-  // return async (dispatch) => { // TODO BORRAR
-  //   try {
-  //     return await axios
-  //       .get(`${URL_POKEMONS}/orderAttackDesc`)
-  //       .then((response) =>
-  //         dispatch({ type: ORDER_BY_ATTACK_DESC, payload: response.data })
-  //       );
-  //   } catch (error) {
-  //     console.log("Actions-orderByAttackDesc error", error);
-  //   }
-  // };
 };
 
 
