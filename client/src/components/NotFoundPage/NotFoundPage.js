@@ -1,22 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ErrorLogo from "../../images/not-found-icon.png";
 import "./NotFoundPage.css";
 
 const ErrorPage = (props) => {
   return (
     <div className="not-found-page-container">
       <div className="not-found-content-container">
-        <h1>Error 404</h1>
-        <h3>Page not found</h3>
-      </div>
-
-      <div className="notfound-btn-container">
-        <Link to="/pokemon" className="link">
-          <button className="detail-back-btn">
-            <ion-icon name="arrow-round-back"></ion-icon>
-            <span>Home</span>
-          </button>
-        </Link>
+        <div className="error-title">
+          <img src={ErrorLogo} alt="" />
+          <h1>404</h1>
+        </div>
+        <h2>Page not found</h2>
+        <p>The link you followed may be broken, or the page may have been removed.</p>
+        <p>Go back to <Link to="/pokemon" className="error-home-link">Pokemon World Home</Link>.</p>
       </div>
     </div>
   );

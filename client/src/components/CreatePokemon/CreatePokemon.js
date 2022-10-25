@@ -11,6 +11,9 @@ const CreatePokemon = (props) => {
   const dispatch = useDispatch();
   const history = useHistory(); // Managing session browser history
   const types = useSelector((state) => state.types);
+  const pokemons = useSelector((state) => state.pokemons);
+  // const pokemonNames = pokemons.map((pokemon) => pokemon.name);
+
   const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
@@ -52,9 +55,16 @@ const CreatePokemon = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    // Last validation: if name is already in use return true
+    const takenName = pokemons.find(pokemon => pokemon.name === formData.name);
+    if (takenName) {
+      setFormData({ ...formData, name: "" })
+      return alert("Name already taken, try with a different one.")
+    }
+
     // Creating new pokemon
     dispatch(createPokemon(formData));
-    alert("Your pokemon was successfully created");
+    alert("Your pokemon was successfully created.");
 
     // Reseting formData state
     setFormData({

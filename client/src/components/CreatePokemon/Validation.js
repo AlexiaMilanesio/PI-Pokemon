@@ -15,9 +15,9 @@ export default function validateForm (formData) {
 
   // Hp validation 
   if (
-    !validNumber.test(formData.hp) ||       // Si no es un número (0-9)
-    parseInt(formData.hp) < 1      ||       // Si es un número menor a 1
-    parseInt(formData.hp) > 200             // Si es un número mayor a 200
+    !validNumber.test(formData.hp) ||                 // Si no es un número (0-9)
+    parseInt(formData.hp) < 1      ||                 // Si es un número menor a 1
+    parseInt(formData.hp) > 200                       // Si es un número mayor a 200
   ) errors.hp = "Hp is required. Must be higher than 1 and less than 200.";
 
   // Attack validation 
@@ -57,13 +57,13 @@ export default function validateForm (formData) {
   
   // Image validation 
   if (
-    !validUrl.test(formData.image)                   // Si no es una URL válida
+    !validUrl.test(formData.image)                    // Si no es una URL válida
   ) errors.image = "Image is required. Must be a valid URL.";
 
   // Types validation 
   if (
-    formData.types.length === 0 ||                   // Si no hay ningún type seleccionado
-    formData.types.length > 2                        // Si hay más de 2 tipos seleccionados
+    formData.types.length === 0 ||                    // Si no hay ningún type seleccionado
+    formData.types.length > 2                         // Si hay más de 2 tipos seleccionados
   ) errors.types = "Type is required. You can select up to 2 types.";
 
   return errors;

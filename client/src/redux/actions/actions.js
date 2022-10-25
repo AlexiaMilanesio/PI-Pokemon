@@ -3,17 +3,20 @@ import axios from "axios";
 export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS";
 export const GET_ALL_TYPES = "GET_ALL_TYPES";
 export const GET_POKEMON_BY_NAME = "GET_POKEMON_BY_NAME";
+export const SEARCH_POKEMON = "SEARCH_POKEMON";
 export const GET_POKEMON_BY_ID = "GET_POKEMON_BY_ID";
 
 export const CREATE_POKEMON = "CREATE_POKEMON";
 export const DELETE_POKEMON = "DELETE_POKEMON";
 
 export const FILTER_TYPES = "FILTER_TYPES";
+export const FILTER_SPECIAL_TYPES = "FILTER_SPECIAL_TYPES"; //todo
 export const FILTER_POKEMONS_FROM_API = "FILTER_POKEMONS_FROM_API";
 export const FILTER_POKEMONS_FROM_DB = "FILTER_POKEMONS_FROM_DB";
 
 export const SORT_BY_ATTACK_ASC = "SORT_BY_ATTACK_ASC";
 export const SORT_BY_ATTACK_DESC = "SORT_BY_ATTACK_DESC";
+export const SORT_BY_MORE_ATTACK = "SORT_BY_MORE_ATTACK"; //todo
 export const SORT_BY_NAME_ASC = "SORT_BY_NAME_ASC";
 export const SORT_BY_NAME_DESC = "SORT_BY_NAME_DESC";
 export const SORT_BY_SPEED_ASC = "SORT_BY_SPEED_ASC"; 
@@ -69,6 +72,10 @@ export const getPokemonByName = (name) => {
   };
 };
 
+export const searchPokemon = (payload) => {
+  return { type: SEARCH_POKEMON, payload }
+}
+
 
 // Create pokemon
 export const createPokemon = (pokemon) => {
@@ -117,6 +124,9 @@ export const filterTypes = (type) => {
   return { type: FILTER_TYPES, payload: type };
 };
 
+export const filterSpecialTypes = () => { //todo
+  return { type: FILTER_SPECIAL_TYPES };
+};
 
 // Filter by origin
 export const getPokemonsFromApi = () => {
@@ -166,6 +176,10 @@ export const sortByAttackAsc = () => {
 export const sortByAttackDesc = () => { 
   return { type: SORT_BY_ATTACK_DESC }
 };
+
+export const sortByMoreAttackPoints = () => { //todo
+  return { type: SORT_BY_MORE_ATTACK } 
+}
 
 
 // Sort by name

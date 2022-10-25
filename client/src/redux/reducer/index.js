@@ -3,9 +3,11 @@ import {
   GET_ALL_TYPES,
   GET_POKEMON_BY_ID,
   GET_POKEMON_BY_NAME,
+  SEARCH_POKEMON, //TODO
   CREATE_POKEMON,
   DELETE_POKEMON,
   FILTER_TYPES,
+  FILTER_SPECIAL_TYPES, //TODO
   FILTER_POKEMONS_FROM_API,
   FILTER_POKEMONS_FROM_DB,
   CLEAR_FILTERS,
@@ -13,6 +15,7 @@ import {
   SORT_BY_NAME_DESC,
   SORT_BY_ATTACK_ASC,
   SORT_BY_ATTACK_DESC,
+  SORT_BY_MORE_ATTACK, //TODO
   SORT_BY_SPEED_ASC,
   SORT_BY_SPEED_DESC,
 } from "../actions/actions";
@@ -51,6 +54,12 @@ const rootReducer = (state = initialState, action) => {
         pokemons: [action.payload],
       };
 
+    case SEARCH_POKEMON: //TODO
+      return {
+        ...state,
+        pokemons: state.pokemons.filter((pokemon) => pokemon.name.includes(action.payload))
+      };
+      
     case CREATE_POKEMON:
       return {
         ...state,
@@ -66,7 +75,7 @@ const rootReducer = (state = initialState, action) => {
       }
 
     case FILTER_TYPES:
-      let filteredType = state.pokemons.filter((pokemon) => {
+      let filteredType = state.pokemonsToFilter.filter((pokemon) => {
         if (pokemon.types) {
           // Creamos un array con todos los nombres de los types
           let typeNames = pokemon.types.map((type) => type.name);
@@ -85,6 +94,26 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemons: filteredType === "All" ? state.pokemons : filteredType,
       };
+
+    case FILTER_SPECIAL_TYPES: //TODO
+      let filteredSpecial = state.pokemons.filter((pokemon) => {
+        if (pokemon.types) {
+          let typeNames = pokemon.types.map((type) => type.name);
+          // console.log(typeNames)
+          // console.log(typeNames.includes("fire") || typeNames.includes("water"))
+          return typeNames.includes("fire") || typeNames.includes("water");
+        }
+        if (pokemon.typeNames) { 
+          // console.log(pokemon.typeNames.includes("fire") || pokemon.typeNames.includes("water"))
+          return pokemon.typeNames.includes("fire") || pokemon.typeNames.includes("water");
+        }
+        return null;
+      }); 
+
+      return {
+        ...state,
+        pokemons: filteredSpecial === "All" ? state.pokemons : filteredSpecial,
+      }
         
     case FILTER_POKEMONS_FROM_API:
       return {
@@ -125,6 +154,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemons: state.pokemons.sort((a, b) => b.attack - a.attack),
       };
+
+    case SORT_BY_MORE_ATTACK: //TODO
+      return {
+        ...state,
+        pokemons: state.pokemons.filter((pokemon) => pokemon.attack >= 50),
+      }
 
     case SORT_BY_SPEED_ASC:
       return {

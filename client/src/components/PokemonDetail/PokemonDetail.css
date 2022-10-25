@@ -17,7 +17,7 @@
   flex-direction: column;
   align-items: center;
   max-width: 38em;
-  padding: 2em 5em 4em 5em;
+  padding: 4em 5em;
   border-radius: 15px;
   box-shadow: 0 0 3px rgb(247, 162, 16);
   background-color: rgba(0, 0, 0, 0.55);
@@ -108,7 +108,7 @@
 /* Buttons */
 
 /* Delete btn */
-.delete-pokemon-btn {
+/* .delete-pokemon-btn {
   float: right;
   align-self: flex-end;
   margin-top: 1em;
@@ -136,7 +136,7 @@
 .delete-pokemon-btn:active {
   box-shadow: 0 3px black;
   transform: translateY(2px);
-}
+} */
 
 /* Back button */
 .detail-back-btn-container {

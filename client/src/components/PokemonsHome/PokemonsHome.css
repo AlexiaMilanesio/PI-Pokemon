@@ -67,8 +67,12 @@
 
 /* Pokemon not found */
 .pokemon-not-found-message {
-  padding: 5em 1em 17em 1em;
-  font-size: 1.5em;
+  background-color: rgba(230, 67, 22, 0.472);
+  box-shadow: 0 0 5px rgb(34, 34, 34);
+  border-radius: 10px;
+  margin: 5em;
+  padding: 1em;
+  font-size: 1.2em;
 }
 
 
