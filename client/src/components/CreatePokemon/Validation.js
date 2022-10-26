@@ -1,6 +1,6 @@
 const whitespace = /\S+/;
 const validString = /^[a-z]+$/i;
-const validNumber = /^\d+$/;
+const validNumber = /^[0-9]+$/;
 const validUrl = /^(ftp|http|https):\/\/[^ "]+$/;
 
 export default function validateForm (formData) {

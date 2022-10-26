@@ -14,7 +14,9 @@ const Header = (props) => {
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter") handleSearch();
+    if (name) {
+      if (e.key === "Enter") handleSearch();
+    }
   }
   
   const handleSearch = (e) => {
@@ -42,6 +44,7 @@ const Header = (props) => {
         <button 
           type="submit" 
           className="search-pokemon-btn" 
+          disabled={!name ? true : false}
           onClick={(e) => handleSearch(e)}
         >
           Search

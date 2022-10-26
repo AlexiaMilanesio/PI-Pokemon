@@ -18,7 +18,7 @@ const CreatePokemon = (props) => {
   const [formData, setFormData] = useState({
     name: "",
     hp: "",
-    attack: "",
+    attack: "", 
     defense: "",
     speed: "",
     height: "",

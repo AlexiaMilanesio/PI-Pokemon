@@ -55,7 +55,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .search-pokemon-btn:active {
-  background-color: rgb(247, 162, 16);
+  background-color: rgb(220, 41, 10);
   box-shadow: 0 3px black;
   transform: translateY(0.5px);
 }

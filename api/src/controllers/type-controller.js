@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Type } = require("../db"); // Model import
+const { Type } = require("../db");
 
 const url = "https://pokeapi.co/api/v2/type";
 

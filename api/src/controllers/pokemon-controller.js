@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Pokemon, Type } = require("../db"); // Model import
+const { Pokemon, Type } = require("../db");
 
 const url = "https://pokeapi.co/api/v2/pokemon";
 const limit = 40;
