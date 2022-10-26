@@ -29,6 +29,21 @@ router.get("/", async (req, res) => {
 });
 
 
+// Codeo en vivo
+router.get("/prueba", async (req, res) => {
+  try {
+    const { name } = req.body;
+    if (name) {
+      const allPokemons = await getAllPokemons();
+      const foundPokemons = allPokemons.filter(pokemon => pokemon.name.includes(name))
+      return res.status(200).send(foundPokemons);
+    }
+  } catch(error) {
+    res.status(400).send(error.message);
+  }
+})
+
+
 // Filter by origin
 router.get("/pokemonsApi", async (req, res) => {
   try {

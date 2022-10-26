@@ -35,6 +35,8 @@ const Filters = (props) => {
 
 
   const handleOriginSelection = (e) => {
+    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
+    // aplicar setValue() para resetear los demas select defaultValues
     setValue({ ...value, selectOrigin: e.target.value })
     if (e.target.value === "All") dispatch(getAllPokemons());
     if (e.target.value === "Existing") dispatch(getPokemonsFromApi());
@@ -42,12 +44,16 @@ const Filters = (props) => {
   };
 
   const handleTypeSelection = (e) => {
+    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
+    // aplicar setValue() para resetear los demas select defaultValues
     setValue({ ...value, selectType: e.target.value })
     if (e.target.value === "All") dispatch(getAllPokemons());
     if (e.target.value !== "All") dispatch(filterTypes(e.target.value));
   };
 
   const handleNameSort = (e) => {
+    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
+    // aplicar setValue() para resetear los demas select defaultValues
     setValue({ ...value, selectNameSort: e.target.value });
     if (e.target.value === "Asc") dispatch(sortByNameAsc());
     if (e.target.value === "Desc") dispatch(sortByNameDesc());
@@ -55,6 +61,8 @@ const Filters = (props) => {
   };
 
   const handleAttackSort = (e) => {
+    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
+    // aplicar setValue() para resetear los demas select defaultValues
     setValue({ ...value, selectAttackSort: e.target.value })
     if (e.target.value === "Asc") dispatch(sortByAttackAsc()); 
     if (e.target.value === "Desc") dispatch(sortByAttackDesc());
@@ -62,6 +70,8 @@ const Filters = (props) => {
   };
 
   const handleSpeedSort = (e) => {
+    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
+    // aplicar setValue() para resetear los demas select defaultValues
     setValue({ ...value, selectSpeedSort: e.target.value })
     if (e.target.value === "Asc") dispatch(sortBySpeedAsc()); 
     if (e.target.value === "Desc") dispatch(sortBySpeedDesc());

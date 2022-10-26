@@ -18,6 +18,7 @@ export const SORT_BY_NAME_DESC = "SORT_BY_NAME_DESC";
 export const SORT_BY_SPEED_ASC = "SORT_BY_SPEED_ASC"; 
 export const SORT_BY_SPEED_DESC = "SORT_BY_SPEED_DESC"; 
 
+
 const URL_POKEMONS = "http://localhost:3001/pokemon";
 const URL_TYPES = "http://localhost:3001/type";
 

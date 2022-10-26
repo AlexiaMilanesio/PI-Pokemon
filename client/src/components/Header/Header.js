@@ -8,7 +8,7 @@ const Header = (props) => {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
 
-
+  
   const handleChange = (e) => {
     setName(e.target.value.trim().toLowerCase());
   };
