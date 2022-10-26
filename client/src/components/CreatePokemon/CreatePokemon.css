@@ -12,9 +12,16 @@
 
 .form-container {
   margin: auto;
+  margin-top: .5em;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 3px rgb(247, 162, 16);
+  border-radius: 10px;
+  width: 43em;
+  padding: 2em 4em;
 }
 
 .form-title {
@@ -40,11 +47,11 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 0 3px rgb(247, 162, 16);
-  border-radius: 10px;
-  width: 43em;
-  padding: 2em 2.5em;
+}
+
+.form-column-separator {
+  margin-right: 3em;
+  margin-bottom: 1em;
 }
 
 /* Inputs */

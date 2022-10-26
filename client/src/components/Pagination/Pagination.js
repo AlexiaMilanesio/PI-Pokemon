@@ -4,7 +4,6 @@ import "./Pagination.css";
 const Pagination = ({pokemons, pokemonsPerPage, pagination, page, isLoading}) => {
   const pageNumbers = [];
 
-  // Math.ceil: rounds up the amount of pages in the app
   for (let i = 1; i <= Math.ceil(pokemons / pokemonsPerPage); i++) {
     pageNumbers.push(i);
   }

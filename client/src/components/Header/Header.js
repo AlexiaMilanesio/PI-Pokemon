@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPokemonByName, /*searchPokemon*/ } from "../../redux/actions/actions";
+import { getPokemonByName } from "../../redux/actions/actions";
 import NavBar from "./NavBar/NavBar";
 import "./Header.css";
 
@@ -16,10 +16,9 @@ const Header = (props) => {
   const handleKeyPress = (e) => {
     if (e.key === "Enter") handleSearch();
   }
-
+  
   const handleSearch = (e) => {
     dispatch(getPokemonByName(name));
-    // dispatch(searchPokemon(name));
     props.setPage(1);
     setName("");
   };
@@ -37,7 +36,7 @@ const Header = (props) => {
           autoComplete="off"
           name="name"
           value={name}
-          onInput={(e) => handleChange(e)}
+          onChange={(e) => handleChange(e)}
           onKeyPress={(e) => handleKeyPress(e)}
         />
         <button 

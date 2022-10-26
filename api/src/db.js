@@ -4,12 +4,12 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-// Sequelize instance - Connection with DB
+
 const sequelize = new Sequelize(
   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
   {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+    logging: false,  // set to console.log to see the raw SQL queries
+    native: false,   // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
 const basename = path.basename(__filename);
@@ -41,12 +41,12 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Importing models with destructuring
 const { Pokemon, Type } = sequelize.models;
 
-// Associations between models - N:M
+// Associations between models
 Pokemon.belongsToMany(Type, { through: "PokemonType" });
 Type.belongsToMany(Pokemon, { through: "PokemonType" });
 
 
 module.exports = {
-  ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
-  conn: sequelize, // para importar la conexión { conn } = require('./db.js');
+  ...sequelize.models,  // para poder importar los modelos así: const { Product, User } = require('./db.js');
+  conn: sequelize,      // para importar la conexión { conn } = require('./db.js');
 };

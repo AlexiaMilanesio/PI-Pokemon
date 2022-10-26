@@ -56,7 +56,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   margin-right: 3em;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 3em;
@@ -87,13 +86,20 @@
   font-size: .9rem;
 }
 
+.technology > span {
+  background-color: rgba(245, 167, 93, 0.754);
+  border-radius: 10px;
+  padding: 0 1em;
+  margin: .5em 0;
+  color: black;
+}
+
 /* About myself */
 .about-myself-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   margin-left: 3em;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 3em 4em 3em 3em;
@@ -105,11 +111,14 @@
 .social-icons-container {
   display: flex;
   flex-direction: column;
+  margin-left: -1.7em;
+  margin-bottom: -1em;
 }
 
 .contact-social-container {
   display: flex;
   justify-content: center;
+  letter-spacing: .4px;
 }
 
 .contact-social-link {

@@ -5,15 +5,12 @@ import {
   getPokemonsFromDb,
   getPokemonsFromApi,
   filterTypes,
-  filterSpecialTypes,
   getAllPokemons,
   getAllTypes,
   sortByAttackAsc,
   sortByAttackDesc,
-  sortByMoreAttackPoints,
   sortByNameAsc, 
   sortByNameDesc,
-  clearFilters,
   sortBySpeedAsc,
   sortBySpeedDesc,
 } from "../../../redux/actions/actions";
@@ -42,24 +39,18 @@ const Filters = (props) => {
     if (e.target.value === "All") dispatch(getAllPokemons());
     if (e.target.value === "Existing") dispatch(getPokemonsFromApi());
     if (e.target.value === "Created") dispatch(getPokemonsFromDb());
-    // props.setPage(1);
-    props.setOrder(e.target.value); // Setting order in local state for combining filters/sorting
   };
 
   const handleTypeSelection = (e) => {
     setValue({ ...value, selectType: e.target.value })
     if (e.target.value === "All") dispatch(getAllPokemons());
-    else if (e.target.value === "Special") dispatch(filterSpecialTypes());
-    dispatch(filterTypes(e.target.value));
-    // props.setPage(1);
-    props.setOrder(e.target.value);
+    if (e.target.value !== "All") dispatch(filterTypes(e.target.value));
   };
 
   const handleNameSort = (e) => {
-    setValue({ ...value, selectNameSort: e.target.value })
+    setValue({ ...value, selectNameSort: e.target.value });
     if (e.target.value === "Asc") dispatch(sortByNameAsc());
     if (e.target.value === "Desc") dispatch(sortByNameDesc());
-    // props.setPage(1);
     props.setOrder(e.target.value); 
   };
 
@@ -67,8 +58,6 @@ const Filters = (props) => {
     setValue({ ...value, selectAttackSort: e.target.value })
     if (e.target.value === "Asc") dispatch(sortByAttackAsc()); 
     if (e.target.value === "Desc") dispatch(sortByAttackDesc());
-    if (e.target.value === "50points") dispatch(sortByMoreAttackPoints());
-    // props.setPage(1);
     props.setOrder(e.target.value);
   };
 
@@ -76,13 +65,11 @@ const Filters = (props) => {
     setValue({ ...value, selectSpeedSort: e.target.value })
     if (e.target.value === "Asc") dispatch(sortBySpeedAsc()); 
     if (e.target.value === "Desc") dispatch(sortBySpeedDesc());
-    // props.setPage(1);
     props.setOrder(e.target.value);
   };
 
-  
+
   const handleClearFilters = (e) => {
-    // Resetting default values of all select html elements
     setValue({
       selectOrigin: "", 
       selectType: "",
@@ -90,8 +77,7 @@ const Filters = (props) => {
       selectAttackSort: "",
       selectSpeedSort: "",
     })
-    // Clearing filters and getting all pokemons back
-    dispatch(clearFilters());
+    
     dispatch(getAllPokemons());
   }
 
@@ -112,11 +98,10 @@ const Filters = (props) => {
         <option value="Created">Created</option>
       </select>
 
-      {/* Sort by pokemon type */}
+      {/* Filter by pokemon type */}
       <select name="selectType" value={value.selectType} onChange={(e) => handleTypeSelection(e)}>
         <option value="" disabled>Type</option>
         <option value="All">All</option>
-        <option value="Special">Special</option>
         {types && types.map((type) => {
           return (
             <option key={type.id} value={type.name}>
@@ -140,7 +125,6 @@ const Filters = (props) => {
         <option value="" disabled>Attack</option>
         <option value="Asc">Ascending &#40;A-Z&#41;</option>
         <option value="Desc">Descending &#40;Z-A&#41;</option>
-        <option value="50points">More than 50 attack points</option>
       </select>
 
       {/* Sort by speed */}
@@ -152,7 +136,7 @@ const Filters = (props) => {
 
 
       <button className="clear-filters-btn" onClick={(e) => handleClearFilters(e)}>
-        <ion-icon name="trash"></ion-icon>
+        {/* <ion-icon name="trash"></ion-icon> */}
         <p>Clear filters</p>
       </button>
     </div>

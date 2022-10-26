@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getAllTypes } from "../../redux/actions/actions";
-import validateForm from "./Validation";
+import validation from "./Validation";
 import NavBar from "../Header/NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import "./CreatePokemon.css";
 
 const CreatePokemon = (props) => {
   const dispatch = useDispatch();
-  const history = useHistory(); // Managing session browser history
+  const history = useHistory();
+  
   const types = useSelector((state) => state.types);
   const pokemons = useSelector((state) => state.pokemons);
-  // const pokemonNames = pokemons.map((pokemon) => pokemon.name);
-
+  
   const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
@@ -45,7 +45,7 @@ const CreatePokemon = (props) => {
     });
 
     // Form validation
-    setFormErrors(validateForm({
+    setFormErrors(validation({
       ...formData,
       [name]: value,
     }));
@@ -55,18 +55,16 @@ const CreatePokemon = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Last validation: if name is already in use return true
+    // Last validation
     const takenName = pokemons.find(pokemon => pokemon.name === formData.name);
     if (takenName) {
       setFormData({ ...formData, name: "" })
-      return alert("Name already taken, try with a different one.")
+      return alert("Name is already taken, try with a different one.")
     }
 
-    // Creating new pokemon
     dispatch(createPokemon(formData));
     alert("Your pokemon was successfully created.");
 
-    // Reseting formData state
     setFormData({
       name: "",
       hp: "",
@@ -79,7 +77,6 @@ const CreatePokemon = (props) => {
       types: [],
     });
 
-    // Redirecting to home page: new entry onto the browser history stack
     history.push("/pokemon"); 
   };
 

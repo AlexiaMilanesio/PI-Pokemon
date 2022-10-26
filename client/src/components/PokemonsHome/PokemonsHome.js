@@ -19,14 +19,14 @@ const PokemonsHome = (props) => {
   
   // ------------------------- Pagination -------------------------- //
 
+  const [order, setOrder] = useState("");
   const [page, setPage] = useState(1);
-  const [pokemonsPerPage] = useState(12);
-  const [setOrder] = useState("");
+  const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
   const indexOfLastPokemon = page * pokemonsPerPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
   const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
   const pagination = (pageNumber) => setPage(pageNumber); 
-
+  
   // --------------------------------------------------------------- //
 
 
@@ -39,12 +39,12 @@ const PokemonsHome = (props) => {
     <div className="pokemons-container">
       <Header 
         setPage={setPage} 
+        setOrder={setOrder} 
         pokemons={pokemons}
       />
 
       <div className="pokemons-content">
         <ControlPanel 
-          setPage={setPage} 
           setOrder={setOrder} 
         />
 

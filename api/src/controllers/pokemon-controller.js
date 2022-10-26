@@ -1,6 +1,5 @@
 const axios = require("axios");
-// Model imports
-const { Pokemon, Type } = require("../db");
+const { Pokemon, Type } = require("../db"); // Model import
 
 const url = "https://pokeapi.co/api/v2/pokemon";
 const limit = 40;
@@ -9,17 +8,14 @@ const limit = 40;
 // Get pokemons
 const getPokemonsFromApi = async () => {
   try {
-    // Getting array of { name, url } of 40 pokemons
     const pokemonApi = await axios
       .get(`${url}?offset=0&limit=${limit}`)
       .then((response) => response.data.results);
 
-    // Getting array of pokemons info
     const detailedPokemonApi = pokemonApi.map(
       async (p) => await axios.get(`${p.url}`)
     );
 
-    // Solicitudes simultáneas: trae primero la info del pokemon que más rápido responda la petición
     const pokemonsInfo = await axios.all(detailedPokemonApi);
 
     let pokemonsFromApi = pokemonsInfo.map((p) => {
@@ -41,23 +37,22 @@ const getPokemonsFromApi = async () => {
 
     return pokemonsFromApi;
   } catch (error) {
-    console.log("There's been an error while trying to get the pokemons from the API", error);
+    console.log("There's been an error while trying to get the pokemons from the API: " + error);
   }
 };
 
 
 const getPokemonsFromDb = async () => {
   try {
-    // Guardamos en un array todos los pokemons existentes en la base de datos
     return await Pokemon.findAll({
-      include: { // Sequelize JOIN
+      include: { 
         model: Type,
         attributes: ["id", "name"],
-        through: { attributes: [] }, // Para que no traiga datos de tabla intermedia PokemonType
+        through: { attributes: [] },
       },
     });
   } catch (error) {
-    console.log("There's been an error while trying to get the pokemons from the DB", error)
+    console.log("There's been an error while trying to get the pokemons from the DB: " + error);
   }
 };
 
@@ -70,7 +65,7 @@ const getAllPokemons = async () => {
 
     return allPokemons;
   } catch (error) {
-    console.log("There's been an error while trying to get all pokemons", error);
+    console.log("There's been an error while trying to get all pokemons: " + error);
   }
 };
 
@@ -99,7 +94,7 @@ const getPokemonFromApiById = async (id) => {
       }),
     };
   } catch (error) {
-    console.log(`Pokemon with id: ${id} not found in API`, error);
+    console.log(`Pokemon with id: ${id} not found in API`);
   }
 };
 
@@ -116,9 +111,10 @@ const getPokemonFromDbById = async (id) => {
     });
 
     if (!pokemonFromDb) return null;
+
     return pokemonFromDb;
   } catch (error) {
-    console.log(`Pokemon with id: ${id} not found in DB`, error);
+    console.log(`Pokemon with id: ${id} not found in DB`);
   }
 };
 
@@ -130,7 +126,7 @@ const getPokemonById = async (id) => {
     let pokemonById;
     
     if (!pokemonApiById) {
-      if (!pokemonDbById) return `Pokemon not found. There's no pokemon with id: ${id}`;
+      if (!pokemonDbById) return "Pokemon not found";
       pokemonById = pokemonDbById;
     } else {
       pokemonById = pokemonApiById;
@@ -138,7 +134,7 @@ const getPokemonById = async (id) => {
 
     return pokemonById;
   } catch (error) {
-    console.log("There's been an error while trying to get pokemon by id", error);
+    console.log("There's been an error while trying to get pokemon by id: " + error);
   }
 };
 
@@ -184,6 +180,7 @@ const getPokemonFromDbByName = async (name) => {
     });
 
     if(!pokemonFromDb) return null;
+
     return pokemonFromDb;
   } catch (error) {
     console.log(`Pokemon ${name} not found in DB`);
@@ -198,15 +195,15 @@ const getPokemonByName = async (name) => {
     let pokemonByName;
 
     if (!pokemonApiByName) {
-      if (!pokemonDbByName)
-        return "Pokemon not found";
+      if (!pokemonDbByName) return "Pokemon not found";
       pokemonByName = pokemonDbByName;
     } else {
       pokemonByName = pokemonApiByName;
     }
+
     return pokemonByName;
   } catch (error) {
-    console.log("There's been an error while trying to get pokemon by name", error);
+    console.log("There's been an error while trying to get pokemon by name: " + error);
   }
 };
 
@@ -215,20 +212,17 @@ const getPokemonByName = async (name) => {
 // Create new pokemon
 const createPokemon = async (name, hp, attack, defense, speed, height, weight, image, types) => {
   try {
-    // Creating a new pokemon in DB (at this point, it doesn't have types)
     const newPokemon = await Pokemon.create({
       name, hp, attack, defense, speed, height, weight, image
     });
 
-    // Search types of new pokemon in Type table DB
     const newPokemonTypes = await Type.findAll({ 
       where: { name: types },
     });
 
-    // Adding types to new pokemon with sequelize association method "add"
     return await newPokemon.addType(newPokemonTypes);   
   } catch (error) {
-    console.log("There's been an error while while creating your pokemon", error);
+    console.log("There's been an error while creating your pokemon: " + error);
   }
 };
 

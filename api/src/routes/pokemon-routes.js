@@ -1,6 +1,4 @@
 const { Router } = require("express");
-
-// Controllers imports
 const {
   getPokemonsFromApi,
   getPokemonsFromDb,
@@ -13,7 +11,7 @@ const {
 const router = Router();
 
 
-// --------------------- POKEMON ROUTES --------------------- //
+// ---------------------- POKEMON ROUTES ---------------------- //
 
 router.get("/", async (req, res) => {
   const { name } = req.query;
@@ -51,7 +49,6 @@ router.get("/pokemonsDb", async (req, res) => {
 });
 
 
-
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   try {
@@ -67,7 +64,7 @@ router.post("/", async (req, res) => {
   try {
     const { name, hp, attack, defense, speed, height, weight, image, types } = req.body;
 
-    if (!name || !image) // Solo name & image porque las demás propiedades tienen un defaultValue en el Pokemon model
+    if (!name || !image) // No defaultValue
       return res.status(404).send("Name and image are required to create a new pokemon");
 
     const result = await createPokemon(

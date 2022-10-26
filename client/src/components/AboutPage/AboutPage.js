@@ -27,35 +27,35 @@ const AboutPage = (props) => {
 
               <div className="technology-container">
                 <div className="technology">
-                  <ion-icon name="logo-html5"></ion-icon>
+                  {/* <ion-icon name="logo-html5"></ion-icon> */}
                   <span>HTML5</span>
                 </div>
                 <div className="technology">
-                  <ion-icon name="logo-css3"></ion-icon>
+                  {/* <ion-icon name="logo-css3"></ion-icon> */}
                   <span>CSS3</span>
                 </div>
                 <div className="technology">
-                  <ion-icon name="logo-javascript"></ion-icon>
+                  {/* <ion-icon name="logo-javascript"></ion-icon> */}
                   <span>JavaScript</span>
                 </div>
                 <div className="technology">
-                  <ion-icon name="aperture"></ion-icon>
+                  {/* <ion-icon name="aperture"></ion-icon> */}
                   <span>React</span>
                 </div>
                 <div className="technology">
-                  <ion-icon name="nuclear"></ion-icon>
+                  {/* <ion-icon name="nuclear"></ion-icon> */}
                   <span>Redux</span>
                 </div>
                 <div className="technology">
-                  <ion-icon name="grid"></ion-icon>
+                  {/* <ion-icon name="grid"></ion-icon> */}
                   <span>Sequelize - PostgresSQL</span>
                 </div>
                 <div className="technology">
-                  <ion-icon name="flask"></ion-icon>
+                  {/* <ion-icon name="flask"></ion-icon> */}
                   <span>Express</span>
                 </div>
                 <div className="technology">
-                  <ion-icon name="paw"></ion-icon>
+                  {/* <ion-icon name="paw"></ion-icon> */}
                   <span>Pokeapi</span>
                 </div>
               </div>
@@ -75,8 +75,8 @@ const AboutPage = (props) => {
                   rel="noreferrer"
                   className="contact-social-link"
                 >
-                  <ion-icon name="logo-github"></ion-icon> 
-                  <p>AlexiaMilanesio</p>
+                  {/* <ion-icon name="logo-github"></ion-icon>  */}
+                  <p><strong>GitHub:</strong> AlexiaMilanesio</p>
                 </a>
               </li>
               <li className="contact-li">
@@ -86,8 +86,8 @@ const AboutPage = (props) => {
                   rel="noreferrer"
                   className="contact-social-link"
                 >
-                  <ion-icon name="logo-linkedin"></ion-icon>
-                  <p>zarina-alexia-milanesio</p>
+                  {/* <ion-icon name="logo-linkedin"></ion-icon> */}
+                  <p><strong>LinkedIn:</strong> zarina-alexia-milanesio</p>
                 </a>
               </li>
               <li className="contact-li">
@@ -97,8 +97,8 @@ const AboutPage = (props) => {
                   rel="noreferrer"
                   className="contact-social-link"
                 >
-                  <ion-icon name="logo-instagram"></ion-icon>
-                  <p>alemilanesio</p>
+                  {/* <ion-icon name="logo-instagram"></ion-icon> */}
+                  <p><strong>Instagram:</strong> alemilanesio</p>
                 </a>
               </li>
               <li className="contact-li contact-text">
@@ -106,8 +106,8 @@ const AboutPage = (props) => {
                   href="mailto:alexiamilanesio9@gmail.com"
                   className="contact-social-link"
                 >
-                  <ion-icon name="mail"></ion-icon>
-                  <p>alexiamilanesio9@gmail.com</p>
+                  {/* <ion-icon name="mail"></ion-icon> */}
+                  <p><strong>Gmail:</strong> alexiamilanesio9@gmail.com</p>
                 </a>
               </li>
             </div>

@@ -1,28 +1,22 @@
 import axios from "axios";
 
 export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS";
-export const GET_ALL_TYPES = "GET_ALL_TYPES";
 export const GET_POKEMON_BY_NAME = "GET_POKEMON_BY_NAME";
-export const SEARCH_POKEMON = "SEARCH_POKEMON";
 export const GET_POKEMON_BY_ID = "GET_POKEMON_BY_ID";
+export const GET_ALL_TYPES = "GET_ALL_TYPES";
 
 export const CREATE_POKEMON = "CREATE_POKEMON";
-export const DELETE_POKEMON = "DELETE_POKEMON";
 
 export const FILTER_TYPES = "FILTER_TYPES";
-export const FILTER_SPECIAL_TYPES = "FILTER_SPECIAL_TYPES"; //todo
 export const FILTER_POKEMONS_FROM_API = "FILTER_POKEMONS_FROM_API";
 export const FILTER_POKEMONS_FROM_DB = "FILTER_POKEMONS_FROM_DB";
 
 export const SORT_BY_ATTACK_ASC = "SORT_BY_ATTACK_ASC";
 export const SORT_BY_ATTACK_DESC = "SORT_BY_ATTACK_DESC";
-export const SORT_BY_MORE_ATTACK = "SORT_BY_MORE_ATTACK"; //todo
 export const SORT_BY_NAME_ASC = "SORT_BY_NAME_ASC";
 export const SORT_BY_NAME_DESC = "SORT_BY_NAME_DESC";
 export const SORT_BY_SPEED_ASC = "SORT_BY_SPEED_ASC"; 
 export const SORT_BY_SPEED_DESC = "SORT_BY_SPEED_DESC"; 
-
-export const CLEAR_FILTERS = "CLEAR_FILTERS";
 
 const URL_POKEMONS = "http://localhost:3001/pokemon";
 const URL_TYPES = "http://localhost:3001/type";
@@ -38,7 +32,7 @@ export const getAllPokemons = () => {
           dispatch({ type: GET_ALL_POKEMONS, payload: response.data })
         );
     } catch (error) {
-      console.log("Actions-getAllPokemons error", error);
+      console.log("Actions-getAllPokemons error: " + error);
     }
   };
 };
@@ -52,7 +46,7 @@ export const getPokemonById = (id) => {
           dispatch({ type: GET_POKEMON_BY_ID, payload: response.data })
         );
     } catch (error) {
-      console.log("Actions-getPokemonById error", error);
+      console.log("Actions-getPokemonById error: " + error);
     }
   };
 };
@@ -67,14 +61,10 @@ export const getPokemonByName = (name) => {
         );
 
     } catch (error) {
-      console.log("Actions-getPokemonByName error", error);
+      console.log("Actions-getPokemonByName error: " + error);
     }
   };
 };
-
-export const searchPokemon = (payload) => {
-  return { type: SEARCH_POKEMON, payload }
-}
 
 
 // Create pokemon
@@ -85,19 +75,9 @@ export const createPokemon = (pokemon) => {
         dispatch({ type: CREATE_POKEMON, payload: response.data });
       });
     } catch (error) {
-      console.log("Actions-createPokemon error", error);
+      console.log("Actions-createPokemon error: " + error);
     }
   };
-};
-
-
-// Delete pokemon
-export const deletePokemon = (id) => {
-  try {
-    return { type: DELETE_POKEMON, payload: id }
-  } catch (error) {
-    console.log("Actions-deletePokemon error", error);
-  }
 };
 
 
@@ -111,7 +91,7 @@ export const getAllTypes = () => {
           dispatch({ type: GET_ALL_TYPES, payload: response.data })
         );
     } catch (error) {
-      console.log("Actions-getAllTypes error", error);
+      console.log("Actions-getAllTypes error: " + error);
     }
   };
 };
@@ -124,9 +104,6 @@ export const filterTypes = (type) => {
   return { type: FILTER_TYPES, payload: type };
 };
 
-export const filterSpecialTypes = () => { //todo
-  return { type: FILTER_SPECIAL_TYPES };
-};
 
 // Filter by origin
 export const getPokemonsFromApi = () => {
@@ -138,7 +115,7 @@ export const getPokemonsFromApi = () => {
           dispatch({ type: FILTER_POKEMONS_FROM_API, payload: response.data })
         );
     } catch (error) {
-      console.log("Actions-getPokemonsFromApi error", error);
+      console.log("Actions-getPokemonsFromApi error: " + error);
     }
   };
 };
@@ -152,7 +129,7 @@ export const getPokemonsFromDb = () => {
           dispatch({ type: FILTER_POKEMONS_FROM_DB, payload: response.data })
         );
     } catch (error) {
-      console.log("Actions-getPokemonsFromDb error", error);
+      console.log("Actions-getPokemonsFromDb error: " + error);
     }
   };
 };
@@ -177,26 +154,12 @@ export const sortByAttackDesc = () => {
   return { type: SORT_BY_ATTACK_DESC }
 };
 
-export const sortByMoreAttackPoints = () => { //todo
-  return { type: SORT_BY_MORE_ATTACK } 
-}
 
-
-// Sort by name
+// Sort by speed
 export const sortBySpeedAsc = () => {
   return { type: SORT_BY_SPEED_ASC };
 };
 
 export const sortBySpeedDesc = () => { 
   return { type: SORT_BY_SPEED_DESC };
-};
-
-
-// Clear filters
-export const clearFilters = () => {
-  try {
-    return { type: CLEAR_FILTERS, payload: [] };
-  } catch (error) {
-    console.log("Actions-clearFilters error", error);
-  }
 };

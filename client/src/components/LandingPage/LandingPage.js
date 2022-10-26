@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./LandingPage.css";
 
-const LandingPage = (props) => {
+const LandingPage = () => {
   return (
     <div className="landing-container">
       <div className="title-container">

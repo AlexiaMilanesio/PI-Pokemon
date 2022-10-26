@@ -4,7 +4,7 @@ const { getTypes } = require("../controllers/type-controller");
 const router = Router();
 
 
-// --------------------- TYPE ROUTES --------------------- //
+// ---------------------- TYPE ROUTES ---------------------- //
 
 router.get("/", async (req, res) => {
   try {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import ErrorLogo from "../../images/not-found-icon.png";
 import "./NotFoundPage.css";
 
-const ErrorPage = (props) => {
+const ErrorPage = () => {
   return (
     <div className="not-found-page-container">
       <div className="not-found-content-container">
