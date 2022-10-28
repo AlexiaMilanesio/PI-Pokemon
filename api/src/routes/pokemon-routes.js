@@ -14,8 +14,8 @@ const router = Router();
 // ---------------------- POKEMON ROUTES ---------------------- //
 
 router.get("/", async (req, res) => {
-  const { name } = req.query;
   try {
+    const { name } = req.query;
     if (!name) {
       const result = await getAllPokemons();
       return res.status(200).send(result);
@@ -29,7 +29,8 @@ router.get("/", async (req, res) => {
 });
 
 
-// Codeo en vivo
+// ------------------- Codeo en vivo ------------------- //
+
 router.get("/prueba", async (req, res) => {
   try {
     const { name } = req.body;
@@ -41,7 +42,8 @@ router.get("/prueba", async (req, res) => {
   } catch(error) {
     res.status(400).send(error.message);
   }
-})
+});
+// ---------------------------------------------------- //
 
 
 // Filter by origin
@@ -65,8 +67,8 @@ router.get("/pokemonsDb", async (req, res) => {
 
 
 router.get("/:id", async (req, res) => {
-  const { id } = req.params;
   try {
+    const { id } = req.params;
     const result = await getPokemonById(id);
     res.status(200).send(result);
   } catch (error) {
