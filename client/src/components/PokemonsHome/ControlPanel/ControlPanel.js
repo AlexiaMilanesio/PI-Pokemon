@@ -35,44 +35,61 @@ const Filters = (props) => {
 
 
   const handleOriginSelection = (e) => {
-    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
-    // aplicar setValue() para resetear los demas select defaultValues
-    setValue({ ...value, selectOrigin: e.target.value })
+    setValue({ 
+      selectOrigin: e.target.value,
+      selectType: "",
+      selectNameSort: "",
+      selectAttackSort: "",
+      selectSpeedSort: "",
+    })
     if (e.target.value === "All") dispatch(getAllPokemons());
     if (e.target.value === "Existing") dispatch(getPokemonsFromApi());
     if (e.target.value === "Created") dispatch(getPokemonsFromDb());
   };
 
   const handleTypeSelection = (e) => {
-    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
-    // aplicar setValue() para resetear los demas select defaultValues
-    setValue({ ...value, selectType: e.target.value })
+    setValue({ 
+      selectOrigin: "",
+      selectType: e.target.value,
+      selectNameSort: "",
+      selectAttackSort: "",
+      selectSpeedSort: "",
+    })
     if (e.target.value === "All") dispatch(getAllPokemons());
     if (e.target.value !== "All") dispatch(filterTypes(e.target.value));
   };
 
   const handleNameSort = (e) => {
-    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
-    // aplicar setValue() para resetear los demas select defaultValues
-    setValue({ ...value, selectNameSort: e.target.value });
+    setValue({ 
+      ...value,
+      selectNameSort: e.target.value,
+      selectAttackSort: "",
+      selectSpeedSort: "",
+    })
     if (e.target.value === "Asc") dispatch(sortByNameAsc());
     if (e.target.value === "Desc") dispatch(sortByNameDesc());
     props.setOrder(e.target.value); 
   };
 
   const handleAttackSort = (e) => {
-    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
-    // aplicar setValue() para resetear los demas select defaultValues
-    setValue({ ...value, selectAttackSort: e.target.value })
+    setValue({ 
+      ...value,
+      selectNameSort: "",
+      selectAttackSort: e.target.value,
+      selectSpeedSort: "",
+    })
     if (e.target.value === "Asc") dispatch(sortByAttackAsc()); 
     if (e.target.value === "Desc") dispatch(sortByAttackDesc());
     props.setOrder(e.target.value);
   };
 
   const handleSpeedSort = (e) => {
-    // FEEDBACK: Antes de cada hacer un dispatch de ordenamiento 
-    // aplicar setValue() para resetear los demas select defaultValues
-    setValue({ ...value, selectSpeedSort: e.target.value })
+    setValue({ 
+      ...value,
+      selectNameSort: "",
+      selectAttackSort: "",
+      selectSpeedSort: e.target.value ,
+    })
     if (e.target.value === "Asc") dispatch(sortBySpeedAsc()); 
     if (e.target.value === "Desc") dispatch(sortBySpeedDesc());
     props.setOrder(e.target.value);

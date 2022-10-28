@@ -17,6 +17,7 @@ import {
 
 const initialState = {
   pokemons: [],
+  filteredPokemons: [],
   pokemonsToFilter: [],
   pokemonDetail: {},
   types: [],
@@ -28,6 +29,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: action.payload,
+        filteredPokemons: action.payload,
         pokemonsToFilter: action.payload,
       };
 
@@ -42,14 +44,14 @@ const rootReducer = (state = initialState, action) => {
     case GET_POKEMON_BY_ID:
       return {
         ...state,
-        pokemonDetail: action.payload,
+        pokemonDetail: action.payload, 
       };
 
 
     case GET_POKEMON_BY_NAME:
       return {
         ...state,
-        pokemons: [action.payload],
+        filteredPokemons: [action.payload], 
       };
       
 
@@ -57,6 +59,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemons: [...state.pokemons, action.payload],
+        filteredPokemons: [...state.filteredPokemons, action.payload],
         pokemonsToFilter: [...state.pokemonsToFilter, action.payload],
       };
 
@@ -72,28 +75,28 @@ const rootReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        pokemons: filteredType === "All" ? state.pokemons : filteredType,
+        filteredPokemons: filteredType === "All" ? state.pokemonsToFilter : filteredType, 
       };
 
       
     case FILTER_POKEMONS_FROM_API:
       return {
         ...state,
-        pokemons: action.payload,
+        filteredPokemons: action.payload, 
       };
     
 
     case FILTER_POKEMONS_FROM_DB:
       return {
         ...state,
-        pokemons: action.payload,
+        filteredPokemons: action.payload, 
       };
 
 
     case SORT_BY_NAME_ASC:
       return {
         ...state,
-        pokemons: state.pokemons.sort((a, b) =>
+        filteredPokemons: state.filteredPokemons.sort((a, b) => 
           a.name > b.name ? 1 : a.name < b.name ? -1 : 0
         ),
       };
@@ -102,7 +105,7 @@ const rootReducer = (state = initialState, action) => {
     case SORT_BY_NAME_DESC:
       return {
         ...state,
-        pokemons: state.pokemons.sort((a, b) =>
+        filteredPokemons: state.filteredPokemons.sort((a, b) => 
           a.name < b.name ? 1 : a.name > b.name ? -1 : 0
         ),
       };
@@ -111,28 +114,28 @@ const rootReducer = (state = initialState, action) => {
     case SORT_BY_ATTACK_ASC:
       return {
         ...state,
-        pokemons: state.pokemons.sort((a, b) => a.attack - b.attack),
+        filteredPokemons: state.filteredPokemons.sort((a, b) => a.attack - b.attack), 
       };
 
 
     case SORT_BY_ATTACK_DESC:
       return {
         ...state,
-        pokemons: state.pokemons.sort((a, b) => b.attack - a.attack),
+        filteredPokemons: state.filteredPokemons.sort((a, b) => b.attack - a.attack), 
       };
 
 
     case SORT_BY_SPEED_ASC:
       return {
         ...state,
-        pokemons: state.pokemons.sort((a, b) => a.speed - b.speed),
+        filteredPokemons: state.filteredPokemons.sort((a, b) => a.speed - b.speed), 
       };
 
 
     case SORT_BY_SPEED_DESC:
       return {
         ...state,
-        pokemons: state.pokemons.sort((a, b) => b.speed - a.speed),
+        filteredPokemons: state.filteredPokemons.sort((a, b) => b.speed - a.speed), 
       };
 
 

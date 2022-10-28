@@ -12,7 +12,7 @@ const PokemonDetail = (props) => {
   const pokemon = useSelector((state) => state.pokemonDetail);
   const pokemonId = props.match.params.id;
   const [loading, setLoading] = useState(true);
-  setTimeout(() => setLoading(false), 1000);
+  setTimeout(() => setLoading(false), 1500);
 
 
   useEffect(() => {

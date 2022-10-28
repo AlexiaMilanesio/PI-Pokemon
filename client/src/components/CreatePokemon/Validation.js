@@ -3,7 +3,7 @@ const validString = /^[a-z]+$/i;
 const validNumber = /^[0-9]+$/;
 const validUrl = /^(ftp|http|https):\/\/[^ "]+$/;
 
-export default function validateForm (formData) {
+export default function validation (formData) {
   let errors = {};
 
   // Name validation
@@ -13,7 +13,7 @@ export default function validateForm (formData) {
     formData.name.length < 3                          
   ) errors.name = "Name is required. Must be longer than two characters and cannot contain numbers or special characters.";
 
-
+  
   // Hp validation 
   if (
     !validNumber.test(formData.hp) ||                

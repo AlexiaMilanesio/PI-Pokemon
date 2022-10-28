@@ -13,8 +13,9 @@ import "./PokemonsHome.css";
 const PokemonsHome = (props) => {
   const dispatch = useDispatch();
   const pokemons = useSelector((state) => state.pokemons);
+  const filteredPokemons = useSelector((state) => state.filteredPokemons);
   const [loading, setLoading] = useState(true);
-  setTimeout(() => setLoading(false), 1000);
+  setTimeout(() => setLoading(false), 2000);
 
   
   // ------------------------- Pagination -------------------------- //
@@ -24,7 +25,7 @@ const PokemonsHome = (props) => {
   const [pokemonsPerPage, setPokemonsPerPage] = useState(12);
   const indexOfLastPokemon = page * pokemonsPerPage;
   const indexOfFirstPokemon = indexOfLastPokemon - pokemonsPerPage;
-  const currentPokemons = pokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
+  const currentPokemons = filteredPokemons.slice(indexOfFirstPokemon, indexOfLastPokemon);
   const pagination = (pageNumber) => setPage(pageNumber); 
   
   // --------------------------------------------------------------- //
@@ -81,7 +82,7 @@ const PokemonsHome = (props) => {
           {!loading && currentPokemons[0] !== "Pokemon not found" && currentPokemons.length > 1
             ? <Pagination
                 pokemonsPerPage={pokemonsPerPage}
-                pokemons={pokemons.length}
+                filteredPokemons={filteredPokemons.length}
                 pagination={pagination}
                 page={page}
               />

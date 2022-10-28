@@ -13,7 +13,7 @@ const CreatePokemon = (props) => {
   
   const types = useSelector((state) => state.types);
   const pokemons = useSelector((state) => state.pokemons);
-  
+
   const [formErrors, setFormErrors] = useState({});
   const [formData, setFormData] = useState({
     name: "",
@@ -45,10 +45,12 @@ const CreatePokemon = (props) => {
     });
 
     // Form validation
-    setFormErrors(validation({
-      ...formData,
-      [name]: value,
-    }));
+    setFormErrors(
+      validation({
+        ...formData,
+        [name]: value
+      }
+    ));
   };
 
 
@@ -61,7 +63,7 @@ const CreatePokemon = (props) => {
       setFormData({ ...formData, name: "" })
       return alert("Name is already taken, try with a different one.")
     }
-
+    
     dispatch(createPokemon(formData));
     alert("Your pokemon was successfully created.");
 
@@ -109,6 +111,7 @@ const CreatePokemon = (props) => {
                 placeholder="Insert pokemon hp"
                 name="hp"
                 value={formData.hp}
+                required
                 onChange={(e) => handleChange(e)}
               />
               <span className="error-message">{formErrors.hp}</span>
@@ -121,6 +124,7 @@ const CreatePokemon = (props) => {
                 placeholder="Insert pokemon attack"
                 name="attack"
                 value={formData.attack}
+                required
                 onChange={(e) => handleChange(e)}
               />
               <span className="error-message">{formErrors.attack}</span>
@@ -133,6 +137,7 @@ const CreatePokemon = (props) => {
                 placeholder="Insert pokemon defense"
                 name="defense"
                 value={formData.defense}
+                required
                 onChange={(e) => handleChange(e)}
               />
               <span className="error-message">{formErrors.defense}</span>
@@ -145,6 +150,7 @@ const CreatePokemon = (props) => {
                 placeholder="Insert pokemon speed"
                 name="speed"
                 value={formData.speed}
+                required
                 onChange={(e) => handleChange(e)}
               />
               <span className="error-message">{formErrors.speed}</span>
@@ -157,6 +163,7 @@ const CreatePokemon = (props) => {
                 placeholder="Insert pokemon height"
                 name="height"
                 value={formData.height}
+                required
                 onChange={(e) => handleChange(e)}
               />
               <span className="error-message">{formErrors.height}</span>
@@ -171,6 +178,7 @@ const CreatePokemon = (props) => {
                 placeholder="Insert pokemon weight"
                 name="weight"
                 value={formData.weight}
+                required
                 onChange={(e) => handleChange(e)}
               />
               <span className="error-message">{formErrors.weight}</span>
@@ -183,6 +191,7 @@ const CreatePokemon = (props) => {
                 placeholder="Insert pokemon image"
                 name="image"
                 value={formData.image}
+                required
                 onChange={(e) => handleChange(e)}
               />
               <span className="error-message">{formErrors.image}</span>
@@ -217,7 +226,11 @@ const CreatePokemon = (props) => {
               <button 
                 type="submit" 
                 className="create-form-btn"
-                disabled={Object.values(formErrors).length === 0 ? false : true}
+                disabled={
+                  Object.values(formErrors).length === 0 
+                  || !(pokemons.find(pokemon => pokemon.name === formData.name))
+                  ? false : true  
+                }
               >
                 Create Pokemon
               </button>

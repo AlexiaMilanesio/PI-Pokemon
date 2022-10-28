@@ -1,10 +1,10 @@
 import React from "react";
 import "./Pagination.css";
 
-const Pagination = ({pokemons, pokemonsPerPage, pagination, page, isLoading}) => {
+const Pagination = ({filteredPokemons, pokemonsPerPage, pagination, page, isLoading}) => {
   const pageNumbers = [];
 
-  for (let i = 1; i <= Math.ceil(pokemons / pokemonsPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(filteredPokemons / pokemonsPerPage); i++) {
     pageNumbers.push(i);
   }
 
