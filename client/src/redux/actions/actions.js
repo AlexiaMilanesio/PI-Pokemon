@@ -19,8 +19,8 @@ export const SORT_BY_SPEED_ASC = "SORT_BY_SPEED_ASC";
 export const SORT_BY_SPEED_DESC = "SORT_BY_SPEED_DESC"; 
 
 
-const URL_POKEMONS = "http://localhost:3001/pokemon";
-const URL_TYPES = "http://localhost:3001/type";
+const URL_POKEMONS = "http://143.198.116.7:3005/pokemon";
+const URL_TYPES = "http://143.198.116.7:3005/type";
 
 
 // Get pokemons
