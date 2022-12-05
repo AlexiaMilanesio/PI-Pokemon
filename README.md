@@ -1,4 +1,24 @@
-Full Stack Individual Project - Pokemon
+# Full Stack Individual Project - Pokemon
+
+## Landing page
+<img width="1440" alt="Screenshot 2022-12-05 at 15 56 38 (2)" src="https://user-images.githubusercontent.com/101998432/205682566-6db454d6-6532-4e19-a1ce-fad45ad3f29a.png">
+
+## Home page
+<img width="1440" alt="Screenshot 2022-12-05 at 15 56 46 (2)" src="https://user-images.githubusercontent.com/101998432/205682536-6c4c89eb-d1e4-4acd-aa79-fb2c255512ba.png">
+
+<img width="1440" alt="Screenshot 2022-12-05 at 15 56 59 (2)" src="https://user-images.githubusercontent.com/101998432/205682592-2e5e847b-8a31-489e-b577-6401de6b8b8f.png">
+
+<img width="1440" alt="Screenshot 2022-12-05 at 15 57 29 (2)" src="https://user-images.githubusercontent.com/101998432/205682613-58f3375c-cd33-41ad-a153-fa7f37fa0136.png">
+
+
+## Create new Pokemon form
+<img width="1440" alt="Screenshot 2022-12-05 at 15 57 38 (2)" src="https://user-images.githubusercontent.com/101998432/205682678-90ce40a5-525c-4719-8d0b-b9b72c282885.png">
+
+<img width="1440" alt="Screenshot 2022-12-05 at 15 57 46 (2)" src="https://user-images.githubusercontent.com/101998432/205682644-92c034ae-d48b-46a9-994e-f466336abbb5.png">
+
+## About page
+<img width="1440" alt="Screenshot 2022-12-05 at 15 57 33 (2)" src="https://user-images.githubusercontent.com/101998432/205682649-27f43a75-46d1-416a-b03b-6b9d4bdbd57b.png">
+
 
 ## Project Objectives
 This app was built using React, Redux, Node and Sequelize.
