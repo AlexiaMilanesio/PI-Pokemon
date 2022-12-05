@@ -43,8 +43,15 @@ The minimum requirements for the approval of the individual project will be deta
 
 **IMPORTANT:** It will not be allowed to use external libraries to apply styles to the application. They will have to use CSS with some of the options that we saw in that class (pure CSS, CSS Modules or Styled Components)
 
-## Used technologies
- ▫️ React
- ▫️ Redux
- ▫️ Express
- ▫️ Sequelize - Postgres
+
+## Quick start
+- Clone repository.
+- Run the next commands in file root: npm install & npm start
+- Open http://localhost:3000 in your browser.
+
+
+## Credits
+- React
+- Redux
+- Express
+- Sequelize - PostgreSQL
