@@ -7,6 +7,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_DEPLOYMENT } = process.env;
 
 const sequelize = new Sequelize(
   // `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`,
+  
   // Added for deployment:
   DB_DEPLOYMENT,
   {
