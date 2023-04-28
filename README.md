@@ -1,6 +1,6 @@
 # Full Stack Individual Project - Pokemon
 
-Deployment link: https://pokemons-alexia.netlify.app/
+Deployment link: <link href="https://pokemons-alexia.netlify.app/" target="_blank"/>
 
 ## Landing page
 <img width="1440" alt="Screenshot 2022-12-05 at 15 56 38 (2)" src="https://user-images.githubusercontent.com/101998432/205682566-6db454d6-6532-4e19-a1ce-fad45ad3f29a.png">
